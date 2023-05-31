@@ -1,0 +1,25 @@
+{
+    "plugins": ["operators.Gladoswikipedia","operators.Spotifyglados","operators.todo","operators.WeatherForecastGlados",
+                "operators.PersonAdder","operators.loader","operators.GladosSoundLibrary",
+                "operators.Gladosnetflix","operators.GladosCalendar","operators.GladosAITrain","operators.GladosAIModule",
+                "operators.FlaskApp","operators.Faces_train","operators.AiModelSetup"],
+    "skills" : [
+        {
+            "name": "Weather_skill"
+        },
+        {
+            "name": "todo_skill"
+        },
+        {
+            "name": "calendar_skill"
+        },
+        {
+            "name": "personadder_skill"
+        },
+        {
+            "name": "personrecognizer_skill"
+        },
+        {
+            "name": "spotify_skill"
+        }]
+}

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Cyclop Default Page" />
+        <meta name="author" content="Mert Ünübol" />
+        <title>Anasayfa</title>
+        <link rel="icon" type="image/x-icon" href="/static" />
+        
+        <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->  
+        <script src="{{ url_for('static', filename='js/tilt.js') }}"></script>
+        <script>
+          const tilt = $('.box').tilt({scale:1.01});
+        </script>
+        <!-- Font Awesome icons (free version)-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/pricing.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/animation.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/teamcard.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/bootstrapmodified.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/home_search_button.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/assembly.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <!-- <img src="/static/images/CyclopTr.png" alt="cycloptrLogo" style="height: 100%;width:100%;z-index: 1;"> -->
+            <a class="navbar-brand" href="#page-top" style="margin-left: 50px;z-index: 1;">CYCLOPTR</a>
+            <div class="container px-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto" >
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" id="home"class="active" style="font-size:15px ;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show-posts" id="show_posts" style="font-size:15px ;">Topluluk ve Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pricing" id="pricing" style="font-size:15px ;">Paket Ve Fiyatlar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add_to_cart" id="show_products" style="font-size:15px ;">Ürünlerimiz</a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" id="logout" style="font-size:15px ;">Çıkış Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/upload-image" id="uploadImage" style="font-size:15px ;">Fotoğraf Yükle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard" id="dashboard" style="font-size:15px ;">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show_card_items" id="show_card_items" style="font-size:15px ;">Sepetim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/responsive-security" id="responsive-security" style="font-size:15px ;">Cyclop Güvenlik Sistemi</a>
+                        </li>
+                        {% endif %}
+                        {% if not current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login" id="login" style="font-size:15px ;">Giriş</a>
+                        </li >
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sign-up" id="signUp" style="font-size:15px ;">Kayıt Ol</a>
+                        </li>
+                        {% endif %}
+                        {% if current_user.id == 1 %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.admin')}}">Admin</a>
+                          </li>
+                        {% endif %}
+                    </ul>
+                    <form method="POST" action="{{ url_for('auth.search')}}" class="d-flex" >
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                        <button class="btn btn-outline-secondary" type="submit">Ara</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <p id='head1' class='header'>CYCLOPTR </p>
+            <p id='head2' class='header'>Ev Güvenlik Sistemleri Ve Akıllı Asistanı</p>
+            <p id='head3' class='header'>Senin için</p>
+            <p id='head4' class='header'>Akıllı komutlarıyla hayatını kolaylaştırmak ve ev sistemleri için otomasyon hizmetleri barındırır.</p>
+            <p id='head5' class='header'>AnaSayfa</p>
+            <a href="#scroll" style="text-decoration:none;color: #fff;">
+                <button class="headerbtn">
+                  <a href="#scroll" style="text-decoration:none;color: #fff;">Daha Fazla Bilgi İçin</a>
+                </button>
+              </a>
+            <div class='light x1'></div>
+            <div class='light x2'></div>
+            <div class='light x3'></div>
+            <div class='light x4'></div>
+            <div class='light x5'></div>
+            <div class='light x6'></div>
+            <div class='light x7'></div>
+            <div class='light x8'></div>
+            <div class='light x9'></div>   
+        </header>
+        <!-- Content section 1-->
+        <section id="scroll" style="margin: auto;margin-bottom: 50px;">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            <form method="POST" >
+                <form action="/">
+                    <div class="container px-5">
+                        <div class="row gx-5 align-items-center">
+
+                            <div class="containment" style="margin-top: 5%;font-size: 120%;margin-bottom: 5%;">
+                                <h1 style="margin-left: 40%;font-weight: 800;font-size: 220%;">Giriş</h1>
+                                <p>Yaptığımız Glados akıllı ev asistanı ve güvenlik sistemi ticari bir üretim amaçlanmamıştır. İlerleyen zamanlarda tamamiyle kendi modelimiz olacak Cyclop akıllı ev asistanı ve güvenlik sistemi için prototip model olarak Glados modeli kullanılmıştır.</p>
+                                <p>Bu proje <a href="https://www.instructables.com/A-fully-3D-printable-GlaDOS-Robotic-ceiling-arm-la/" style="font-weight: 800;">instructables.com</a> linkinde bulunan kullanıcı tarafından modellenmiştir ve temel üretim talimatlarından yararlanarak yapılmıştır.</p>
+                                <p>Yaptığımız Glados modeli elektronik ve mekanik olarak orijinal model üzerinde değişiklikler yapılmıştır.</p>
+                                <h1 style="margin-left: 20%;font-weight: 700;font-size: 200%;">Değişiklik Yapılan ve Eklenen Parçalar</h1>
+                                <div class="image-container">
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/OriginalGladosMovingArmV1.1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/DeğiştirilmişGladosMovingArmV1.1.jpg')}}">
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Orijinal GlaDOS Moving arm V1.1</p>
+                                    <p style="font-size: 90%;">Değiştirilmiş GlaDOS Moving arm V1.1</p>
+                                </div>
+                                <p>GlaDOS Moving arm V1.1 adındaki parça orijinal halinde MG90S Metal Dişli Servo yerine oturamamaktaydı ve kabloları sıkıştırmaktaydı. Bu yüzden dış kozmetik açıdan değişiklik yapmadan servo alanı genişletildi.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/OriginalGladosBaseRing.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/DeğiştirilmişGladosBaseRing.jpg')}}" style="max-width: 15vh;max-height: 15vh;margin-top: 5%;margin-bottom: 5%;">
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Orijinal GlaDOS Base Ring</p>
+                                    <p style="font-size: 90%;">Değiştirilmiş GlaDOS Base Ring</p>
+                                </div>
+                                <p>GlaDOS Base Ring katagorisindeki parçalar 45 derecelik açı olacak şekilde 8 adet parçanın birleştirilmesiyle bir halka oluşturmaktadır. 8 parçanın birleştirilmesinden ötürü 8 adet birleşme noktası kozmetik olarak iyi gözükmemesinden ve birleştirme sürecisini kısaltması için parçaları ikişerli olarak modelleri birleştirerek baskısı alınıldı.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/OriginalDişliler.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/DeğiştirilmişDişliler.jpg')}}" style="max-width: 200px;max-height: 200px;margin-top: 5%;margin-bottom: 5%;">
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Orijinal Dişliler</p>
+                                    <p style="font-size: 90%;">Değiştirilmiş Dişliler</p>
+                                </div>
+                                <p>Orijinal dişliler 1/1 oranından düşük devirlerde 360 derece servonun torkunu kaybetmesine sebep olmaktadır ve bu torku oranını arttırmak için glados gövdesi ile servo motor arasındaki oranı ¼ oranına düşürerek düşük gövde dönüş hızında tork kaybetmesini engellenmiştir. Ayrıca gladosun tam dönme açısının kablolara zarar vermemesi için 360 dereceye sınırlandırılması için pot kullanabilmek ek diş bağlanması için pot ile glados gövdesi dişlisi arasında 1/3 oranına sahip bir dişli sistemi kuruldu bu sayede gövde 360 derece döndüğünde pot 120 derece dönerek konum bilgisi alınabilmiştir.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/KameraEklentisi.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Kamera Eklentisi</p>
+                                </div>
+                                <p>Eklenen parçalardan biri kamera gövdesidir. Bu kameranın konumlandırılan nokta 2 eksenden hareket edebileceği ,görüş açısı en iyi olan yere yerleştirilebilecek şekilde ve Portal2 oyununa sadık kalacak şekilde gladosun duvar kamerasına benzeyecek şekilde modellendi.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/BaseComponent.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Base Parçası</p>
+                                </div>
+                                <p>Orijinal base gövdesinin içi bir elektronik komponent sığacak bir yer bulunmadığından ve temel elektroniklerinin gladosun içinde bulunmasının büyük bir faydası olacağından base bölümünü büyütmesi amaçlanarak bir base eklentisi yapıldı. Bu eklenti sayesinde güç ve mosfet kartını, Arduino kartını ve led sürücüsünü koyabileceğimiz ve ilerleyen zamanda yeni komponentler ekleyebileceğimiz bir alan yaratıldı.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/MainPivotInternals.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Main Pivot Internals</p>
+                                </div>
+                                <p>GlaDOS Main pivot Internals adlı parçanın orjinali baskı sırasında kalitesinin düşeceği bir yapıda olduğu için baskı kalitesinin artması için model üzerinden değişiklik yapılmadan sadece ikiye kesilerek baskısı alınmıştır.</p>
+                                <h1 style="margin-left: 10%;font-weight: 700;font-size: 200%;">Baskıların Alınması ve Birleştirilmesine Hazırlanması</h1>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/AssemblyComponents.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Tüm Parçalar</p>
+                                </div>
+                                <p>Bu projede baskılarımı aldığım cihaz ender 3 V2 dir. Kullanmış olduğum filament pla dır. Baskıların toplan ağırlığı 1.5 kilodur.Baskıları yüzeyin çoğu hangi renk olacağına göre aldım. Işıkların bulunduğu halkada ışık filamentten yansımaması için siyah renkte baskıyı aldım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/BoyanmışComponent.jpg')}}" >
+                                </div>
+                                <p>Baskılar alındıktan sonra halkanın 4 parçasını birbirine yapıştırdım ve Main pivot Internals adlı parçayı düzgün baskı alabilmek için ikiye ayırdığımdan bu parçayı da birbirine yapıştırdım.
+                                    Bu işlemlerin arkasından yüzeylerdeki katman izlerinin ve birleşme noktalarının yok olması için ahşap macunu ile macunladım.Ahşap macunu kuruduktan sonra bir tur daha zımparalanarak düz bir yüzey elde ettim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/BoyamaSonrası.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Boyama Sonrası</p>
+                                </div>
+                                <p>Yüzey tozdan arındırıldıktan sonra orijinal gladosun yüzey renk şemasını kullanarak siyah,beyaz ve gri renklerini kullanarak parçaları akrilik boya ile boyadım. Boyunun sağlamlığını artırmak için ve parlak yüzeyi olması için boyanan yerleri vernikledim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledler.jpg')}}" >
+                                </div>
+                                <div style="display: flex;justify-content: space-around;">
+                                    <p style="font-size: 90%;">Ledler</p>
+                                </div>
+                                <p>İlk aşama elektronik olarak her biri 3w 6500k değerindeki power ledleri birbirine lehimledim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte2.jpg')}}" >
+                                </div>
+                                <p>Aydınlatma halkasının ortasına gövdeyi vidaladım.Ledleri yerleştirmeden önce fanları yerine montajladım. Fanların pozisyonu havayı içeri alacak şekilde yerleştirdim. Kablolarını ise gövdenin ortasına geçen boruların içindeki delikten geçirdim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte3.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte4.jpg')}}" >
+                                </div>
+                                <p>Ledlerin arkasına yapıştıracağım heatsinklerin bir tanesi oyarak içine ntc yerleştirdim. Bu sayede fanlar sürekli çalışmak yerine ledler ısındığında çalışması sağlandı.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte5.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/ledmonte6.jpg')}}" >
+                                </div>
+                                <p>Ledleri halkanın içine yerleştirmeden önce soğutmayı sağlaması için küçük heatsinkler yapıştırdım.Ledleri yerine yerleştirdim. Kabloları da Fanlarla aynı şekilde boruların içindeki deliklerden gövdenin içinden çıkardım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kapakmonte.jpg')}}" >
+                                </div>
+                                <p>Halka içindeki montajlar bittikten sonra kapakları yerine yerleştirip vidaladım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kapakhavya.jpg')}}" >
+                                </div>
+                                <p>8 adet kapak birbirinin arasında boşluklar olduğu için fanlar çalıştığında hava kaçağı yapmaktadır ayrıca geri çıkardığımızda her kapağın vida deliklerinin pozisyonu farklı olduğundan sırasını kaybetme ihtimalini ortadan kaldırmak için her parçayı havya kullarak birbirine kaynakladım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/gövde+tutucu.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/servoyerleştirme.jpg')}}" >
+                                </div>
+                                <p>Elektroniklerin gövde sığmasını sağlamak için ek olarak yaptığım parçayı gövdenin üzerine vidaladım ayrıca dayanım artsın diye yapıştırdım.Motoru yerine monte ettim ve motora bağlı olacak dişli ile motorun paketinden çıkan birleştirme aparatını birbirine vidaladım. Ve saplanın rahat dönebilmesi için hareket yuvasının iki ucuna rulman yerleştirdim.Halkadan çıkan kabloları birbirine lehimledim . Ledlerin gücünü led sürücüden vereceğim için bütün ledler birbirine seri olacak şekilde lehimledim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/m8saplama.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/m8saplama2.jpg')}}" >
+                                </div>
+                                <p>M8 saplamayı 11cm boyutunda kestim ve boğazın içine somun ile yapıştırdım.Boğazı sırt parçasına vidaladım. Esneme yapmaması için vidalama sırasında yapıştırıcı sürdüm.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/göz_led1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/göz_led2.jpg')}}" >
+                                </div>
+                                <p>Göz aydınlatması olarak amber renkli 1w lık powerledin kablolarını lehimledim. Bu kablolar güç kartına kadar uzanacak bir uzunlukta olmalı.Göz ledini kafaya yapıştırdım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kafa1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kafa2.jpg')}}" >
+                                </div>
+                                <br>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kafa4.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/hareketçubuğu.jpg')}}" >
+                                </div>
+                                <p>Kafayı hareket ettirecek olan çubuğu servonun koluna vidaladım.Kafayı boyuna vidaladım ve servoyu yerleştirdikten sonra hareket çubuğunun ucunu kafaya vidaladım.Vücudu yukarı aşağı hareket ettirecek olan servoyu ve kafayı sağa sola çevirecek olan servoyu yerine yerleştirdim ve servo koluna hareket çubuğunu vidaladım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/boyun1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/boyun2.jpg')}}" >
+                                </div>
+                                <br>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/boyunkablo1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/boyunkablo2.jpg')}}" >
+                                </div>
+                                <p>Servoların kablolarını ayırarak kablo çıkış noktalarından çıkardım.Gladosun kabloları siyah olduğundan güç kartına kadar olan kablo uzatmayı siyah kablolar ile yaptım. Bu noktada dikkat edilmesi gereken nokta her kablonun renginin aynı olmasından ve 3 servonun kablosu çıktığından her bir kabloyu hangi servonun ne çıkışı olduğunu etiketlememiz gerektiğidir.Siyah kabloları servo kablolarına lehimledim. Lehim noktası rankli kabloların gözükmemesi için gövdeye olabilecek en yakın noktadan yaptım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/siyahkablo1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/siyahkablo2.jpg')}}" >
+                                </div>
+                                <p>Çıkan kabloları sırttan içeri sokmadan önce Gladosun kablolarının üzerindeki aksesuarları yerleştirdim.Çıkan kabloları sırttaki kablo deliklerinden içeri geçirdim .Kabloları ne sarkacak ne de gergin kalacak şekilde olacak şekilde geçirdim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kamerakablo1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kamerakablo2.jpg')}}" >
+                                </div>
+                                <br>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kamerakablo3.jpg')}}" >
+                                </div>
+                                <p>Kabloları yerleştirirken kameranın yerleşeceği noktaya kameranın kablosu çıkması için delik açtım ve diğer kablolarla beraber gelecek şekilde kabloyu geçirdim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/vücutkablo1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/vücutkablo2.jpg')}}" >
+                                </div>
+                                <p>Kabloları sırttan karın kısmına geçirdim.Bu işlemler yapıldıktan sonra ,sırt ile karını birleştirdim. Alt gövde ile olan hareket mafsalını vidaladım ve servo kolunun ucunu karına vidaladım.Gövde ile boyunu birleştiren tek nokta olan servoya boyunu vidaladım ve arkasına bu vidanın üzerini kapayan gladosun kozmetik parçasını yerine vidaladım.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/soketkablo.jpg')}}" >
+                                </div>
+                                <p>Servo ve göz ledinin kablolarını ayrı ayrı geçireceğimiz yer kalmadığı için servoların ucunda bulunan soketleri siyah kabloların ucuna lehimledim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/havya1.jpg')}}" >
+                                </div>
+                                <p>Gladosa bağlı olacak 12v’u, servoların çalışması için gereken 5v ve göz ledinin çalışması için gereken 3v değerlerini elde etmek için gereken elektronik komponentlerin bulunduğu, ledleri açıp kapayacak mosfetlerin bulunduğu ve fanları ısıya göre çalıştıracak termostat devresinin bulunduğu kartı lehimledim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/pot1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/pot2.jpg')}}" >
+                                </div>
+                                <p>Gladosun dönerek kabloları dolamasını engelleyen potu yerleştirdim . Saplamayı rulmandan geçirerek dişliyi somunla yerine yerleştirdim ve potun dişlisini ve motorun dişlisini yerine taktım.
+                                    Ardından gladosun gövdesinden gelen kabloları hareketli dişlilere dolanmayacak şekilde elektroniklerin olduğu yere çıkardım. Kabloların dişliye dolanmasını engellemek için iki adet yarım ay şeklinde parça basarak kabloları dişlilerden uzak tuttum.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/içparçalar1.jpg')}}" >
+                                </div>
+                                <br>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/içparçalar2.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/içparçalar3.jpg')}}" >
+                                </div>
+                                <br>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kamera1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/kamera2.jpg')}}" >
+                                </div>
+                                <p>Güç kartı, Arduino ve led sürücüyü yerine yerleştirerek kabloları soketlerine taktım.Önceden ayırdığım kameranın kablosunu kameranın kartına yeniden lehimledim vekamera olarak webcam kamerası kullandığımdan görsel olarak gladosa uygun olması için kameranın elektronik kartını çıkararak yapmış olduğum mini bir gladosun güvenlik kamerası kasasına yerleştirdim.</p>
+                                <div class="image-container" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/tavanmonte1.jpg')}}" >
+                                    <img class="assembly_img" src="{{url_for('static' , filename='images/glados_tanıtım/tavanmonte2.jpg')}}" >
+                                </div>
+                                <p>Gladosu tavana monte edeceğimiz kapağı yerine vidaladım.Böylece Glados’un montaj aşaması bitmiştir.</p>
+                                <h1 style="margin-left: 28%;font-weight: 700;font-size: 200%;">Yazılım Geliştirme Aşamaları</h1>
+                            </div>
+
+
+
+                            <div class="container" style="margin: auto;">
+                                <h1 style="color:#3e4555 ;text-align: center;">Takımımızla Tanış</h1>
+                                <div class="rowteam" style="display: flex;">
+                                    <div class="col-md-3 col-sm-6" style="margin:auto;width: auto;">
+                                        <div class="our-team" >
+                                            <div class="pic">
+                                                <img src="{{ url_for('static', filename='images/Mertunubol_80x80.jpeg') }}">
+                                                <ul class="social">
+                                                    <li><a target="_blank" href="#" class="fab fa-youtube"></a> Cycloptr</li>
+                                                    <li><a target="_blank" href="https://github.com/SAOCyper" class="fab fa-github"></a> SAOCyper</li>
+                                                    <li><a target="_blank" href="https://www.instagram.com/mertunubol" class="fab fa-instagram"></a> mertunubol</li>
+                                                    <li><a target="_blank" href="https://www.linkedin.com/in/mert-%C3%BCn%C3%BCbol-577a7b234/" class="fab fa-linkedin"></a> Mert Ünübol</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="team-content" style="margin:auto;">
+                                            <h3 class="title" style="color: black;">Mert Ünübol</h3>
+                                            <span class="post"style="color: black;">Founder & Web Developer</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6" style="margin:auto;width: auto;">
+                                        <div class="our-team">
+                                            <div class="pic">
+                                                <img src="{{ url_for('static', filename='images/VolkanDemirel_80x80.jpeg') }}" >
+                                                <ul class="social">
+                                                    <li><a target="_blank" href="#" class="fab fa-facebook"></a></li>
+                                                    <li><a target="_blank" href="#" class="fab fa-google-plus"></a></li>
+                                                    <li><a target="_blank" href="#" class="fab fa-instagram"></a></li>
+                                                    <li><a target="_blank" href="#" class="fab fa-linkedin"></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="team-content"style="margin-left:auto;">
+                                            <h3 class="title" style="color: black;">Volkan Demirel</h3>
+                                            <span class="post" style="color: black;">Founder & System Designer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </form>
+        </section>
+        <!-- Footer-->
+        <footer class="kilimanjaro_area">
+            <!-- Top Footer Area Start -->
+            <div class="foo_top_header_one section_padding_100_70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Hakkımızda</h5>
+                                <p>Cycloptr akıllı ve hızlı çözümler üretip ev , ofis için otomasyon hizmetleri sunmaktadır.Bunların içinde cihaz kontrolleri ve güvenlik sistemleri ile 7/24 ev güvenliğinizi ve takibinizi yapabilirsiniz. </p>
+                                <p>Şirketimiz çalışanları kadar müşterilerinin fikirlerine de önem verir.Bunun için fikirlerinizi ya da geliştirmelerinizi bloğumuzda paylaşabilirsiniz ve bunların hayata geçirilebilmesine ön ayak olabilirsiniz.</p>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Social Medya</h5>
+                                <ul class="kilimanjaro_social_links">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                                    <li><a target="_blank" href="https://github.com/SAOCyper" ><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Konu Başlıkları</h5>
+                                <ul class=" kilimanjaro_widget">
+                                    <li><a href="#">Yüz Tanıma</a></li>
+                                    <li><a href="#">Ses Tanıma</a></li>
+                                    <li><a href="#">Yapay Zeka</a></li>
+                                    <li><a href="#">İnternet Bilgi Sistemi</a></li>
+                                    <li><a href="#">Chat Bot</a></li>
+                                    <li><a href="#">Ev Otomasyonu</a></li>
+                                    <li><a href="#">Güvenlik Sistemleri</a></li>
+                                    <li><a href="#">Eğlence</a></li>
+                                </ul>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Önemli Linkler</h5>
+                                <ul class="kilimanjaro_links">
+                                    <li><a href="terms-and-conditions"><i class="fa fa-angle-right" aria-hidden="true"></i>Lisans Bilgisi</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Destek Hattı</a></li>
+                                    <li><a href="privacy-policy"><i class="fa fa-angle-right" aria-hidden="true"></i>Privacy</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Kariyer</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk Kuralları</a></li>
+                                    <li><a href="show-posts"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk & Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" >
+                            <div class="kilimanjaro_part">
+                                <h5>Son Postlar</h5>
+                                {% for post in posts %}
+                                    <div class="kilimanjaro_blog_area">
+                                        <div class="kilimanjaro_thumb">
+                                            <img class="img-fluid" src="https://3.bp.blogspot.com/--C1wpaf_S4M/W7V__10nRoI/AAAAAAAAK24/1NSfapuYSIY0f0wzXY9NgoH0FjQLT07YACKgBGAs/s1600/maxresdefault.jpg" alt="">
+                                        </div>
+                                        <a href="#">{{ post.title}}</a><br/>
+                                        <p class="kilimanjaro_date">{{ post.date_posted}} | {{ post.slug}}</p>
+                                        <p>{{ post.content|safe}}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Contact Section -->
+        <section id="contact" class="section has-img-bg pb-0" style="background: url('../static/images/section.jpg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 my-3">
+                        <h6 class="mb-0">Telefon numaramız</h6>
+                        <p class="mb-4">+ 123-456-7890</p>
+
+                        <h6 class="mb-0">Adresimiz</h6>
+                        <p class="mb-4">Anıttepe Mahallesi Gülseren Sokak 20/3 Çankaya/Ankara</p>
+
+                        <h6 class="mb-0">Email</h6>
+                        <p class="mb-0">trcyclop@gmail.com</p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-7">
+                        <form method="POST" action="send_messages">
+                            <h4 class="mb-4">Bize Mesaj Bırak</h4>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name" placeholder="İsim">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="email" class="form-control text-white rounded-0 bg-transparent" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject" placeholder="Konu">
+                                </div>
+                                <div class="form-group col-12" style="margin:auto ;">
+                                    <textarea name="message" id="" cols="30" rows="4" class="form-control text-white rounded-0 bg-transparent" placeholder="Mesaj"></textarea>
+                                </div>
+                                <div class="form-group col-12 mb-0">
+                                    <button type="submit" class="btn btn-primary rounded w-md mt-3">Gönder</button>
+                                </div>                          
+                            </div>                          
+                        </form>
+                    </div>
+                </div>
+                <!-- Page Footer -->
+                <footer class="mt-5 py-4 border-top border-secondary">
+                    <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>,Cycloptr Created By  <a href="https://cycloptr.com/" target="_blank"> Cyclop Inc.</a>  All rights reserved </p>     
+                </footer>
+                <!-- End of Page Footer -->  
+            </div>
+        </section> 
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

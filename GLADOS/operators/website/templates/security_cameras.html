@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Upload Image</title>
+        <link rel="icon" type="image/x-icon" href="/static" />
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+        /> 
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/webcam.min.js') }}" ></script> 
+        <script type="text/javascript" src="{{ url_for('static', filename='js/upload_button.js') }}" ></script>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/pricing.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/upload_button.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/upload_buttonplane.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/upload_image-header.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/upload_image_modifier.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/home_search_button.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body id="page-top" >
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <a class="navbar-brand" href="#page-top" style="margin-left: 50px;">CYCLOPTR</a>
+            
+            <ul class="abc" style="display: flex;align-items: flex-end;margin-top: 3%;">
+                        <li class="nav-item" style="text-decoration: none;">
+                            <a class="nav-link" href="/" id="home"class="active" style="text-decoration: none;font-size:15px ;color: #fff;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" id="logout" style="text-decoration: none;font-size:15px ;color: #fff;">Çıkış Yap</a>
+                        </li>
+                        
+                        {% if current_user.id == 1 %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.admin')}}" style="text-decoration: none;color: #fff;">Admin</a>
+                          </li>
+                        {% endif %}
+            </ul>
+        </nav>
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <p id='head1' class='header'>CYCLOPTR </p>
+            <p id='head2' class='header'>Güvenlik Kayıtlarınızı izleyin</p>
+            <p id='head3' class='header'>Kayıtları inceleyin ve kaydedin</p>
+            <p id='head4' class='header'>Güvenliğinizi istediğiniz gibi yönetin</p>
+            <p id='head5' class='header'>Kamera Kayıtları</p>
+            <div class='light x1'></div>
+            <div class='light x2'></div>
+            <div class='light x3'></div>
+            <div class='light x4'></div>
+            <div class='light x5'></div>
+            <div class='light x6'></div>
+            <div class='light x7'></div>
+            <div class='light x8'></div>
+            <div class='light x9'></div>   
+        </header>
+        <!-- Content section 1-->
+        <section id="scroll" style="margin: auto;height: 2000px;">
+            <div style="margin: auto;">
+                <div class="row gx-5 align-items-center" style="justify-content: center;margin: auto;">
+                    <!-- <div class="container" style="width: 2000px;height: 800px;display: flex;align-items: center;justify-content: center;overflow: hidden;background: rgb(10, 11, 12);">
+                        <div class="videos" style="width: 2000px;height: 800px;display: flex;background: rgb(238, 236, 236); ">
+                            <div style="width: 65%;padding: 10px;">
+                                <div style="width: 100%; height: 100%; object-fit: cover;border:3px solid rgb(1, 1, 7)">
+                                    <img src="{{ url_for('auth.video0') }}" width="100%" height="80%">
+                                </div>
+                            </div>
+                            <div style="width: 35%;padding: 10px 0 10px 10px;display: flex;flex-direction: column;justify-content: space-between;">
+                                <div style="width: 95%;height: 100px; margin: 10px;object-fit: cover;cursor: pointer;transition: 0.2s;">
+                                    <img src="{{ url_for('auth.video1') }}" width="100%">
+                                </div>
+                                <div style="width: 95%;height: 100px; margin: 10px;object-fit: cover;cursor: pointer;transition: 0.2s;">
+                                    <img src="{{ url_for('auth.video2') }}" width="100%">
+                                </div>
+                                <div style="width: 95%;height: 100px; margin: 10px;object-fit: cover;cursor: pointer;transition: 0.2s;">
+                                    <img src="{{ url_for('auth.video3') }}" width="100%">
+                                </div>
+                                <div style="width: 95%;height: 100px; margin: 10px;object-fit: cover;cursor: pointer;transition: 0.2s;">
+                                    <img src="{{ url_for('auth.video4') }}" width="100%">
+                                </div>
+                            </div>
+                            
+                        </div> -->
+                        <div class="wrapper" style=" min-height: 100vh; display: flex;flex-direction: column;">
+                            <div class="items" style="padding: 50px 0;">
+                                <div class="items__conteiner" style="max-width: 1200px;margin: 0 auto;padding: 20px;">
+                                    <h1 class="items__title" style="margin: auto;">Kamera Kayıtları</h1>
+                                    <div class="items__body" style="display: grid;grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));gap: 20px;">
+                                        <div class="item" style="margin-bottom: 30px;">
+                                            <div class="item__video" style="position: relative;margin: 0 0 15px 0;padding: 0px 0px 70% 0px;">
+                                                <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;">
+                                                    <img src="{{ url_for('auth.video0') }}" width="100%" height="100%" autoplay loop muted playsinline>
+                                                </div>
+                                            </div>
+                                            <div class="item__text" style="font-size: 18px;">Kamera 1 Yayın</div>
+                                        </div>
+                    
+                                        <div class="item" style="margin-bottom: 30px;">
+                                            <div class="item__video" style="position: relative;margin: 0 0 15px 0;padding: 0px 0px 70% 0px;">
+                                                <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;">
+                                                    <img src="{{ url_for('auth.video1') }}" width="100%" height="100%" autoplay loop muted playsinline>
+                                                </div>
+                                            </div>
+                                            <div class="item__text" style="font-size: 18px;">Kamera 2 Yayın</div>
+                                        </div>
+                                        <div class="item" style="margin-bottom: 30px;">
+                                            <div class="item__video" style="position: relative;margin: 0 0 15px 0;padding: 0px 0px 70% 0px;">
+                                                <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;">
+                                                    <img src="{{ url_for('auth.video2') }}" width="100%" height="100%" autoplay loop muted playsinline>
+                                                </div>
+                                            </div>
+                                            <div class="item__text" style="font-size: 18px;line-height: 150%;">Kamera 3 Yayın</div>
+                                        </div>
+                                        <div class="item" style="margin-bottom: 30px;">
+                                            <div class="item__video" style="position: relative;margin: 0 0 15px 0;padding: 0px 0px 70% 0px;">
+                                                <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;">
+                                                    <img src="{{ url_for('auth.video3') }}" width="100%" height="100%" autoplay loop muted playsinline>
+                                                </div>
+                                            </div>
+                                            <div class="item__text" style="font-size: 18px;line-height: 150%;">Kamera 4 Yayın</div>
+                                        </div>
+                                        <div class="item" style="margin-bottom: 30px;">
+                                            <div class="item__video" style="position: relative;margin: 0 0 15px 0;padding: 0px 0px 70% 0px;">
+                                                <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;">
+                                                    <img src="{{ url_for('auth.video4') }}" width="100%" height="100%" autoplay loop muted playsinline>
+                                                </div>
+                                            </div>
+                                            <div class="item__text" style="font-size: 18px;line-height: 150%;">Kamera 5 Yayın</div>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script> -->
+                        <p>
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    <ul>
+                                    {% for messages in messages %}
+                                        <li> {{ message }} 
+        
+                                        </li>
+                                    {% endfor %}    
+                                    </ul>
+                                {% endif %}
+                            {% endwith %}    
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="kilimanjaro_area">
+            <!-- Top Footer Area Start -->
+            <div class="foo_top_header_one section_padding_100_70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Hakkımızda</h5>
+                                <p>Cycloptr akıllı ve hızlı çözümler üretip ev , ofis için otomasyon hizmetleri sunmaktadır.Bunların içinde cihaz kontrolleri ve güvenlik sistemleri ile 7/24 ev güvenliğinizi ve takibinizi yapabilirsiniz. </p>
+                                <p>Şirketimiz çalışanları kadar müşterilerinin fikirlerine de önem verir.Bunun için fikirlerinizi ya da geliştirmelerinizi bloğumuzda paylaşabilirsiniz ve bunların hayata geçirilebilmesine ön ayak olabilirsiniz.</p>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Social Medya</h5>
+                                <ul class="kilimanjaro_social_links">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                                    <li><a target="_blank" href="https://github.com/SAOCyper" ><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Konu Başlıkları</h5>
+                                <ul class=" kilimanjaro_widget">
+                                    <li><a href="#">Yüz Tanıma</a></li>
+                                    <li><a href="#">Ses Tanıma</a></li>
+                                    <li><a href="#">Yapay Zeka</a></li>
+                                    <li><a href="#">İnternet Bilgi Sistemi</a></li>
+                                    <li><a href="#">Chat Bot</a></li>
+                                    <li><a href="#">Ev Otomasyonu</a></li>
+                                    <li><a href="#">Güvenlik Sistemleri</a></li>
+                                    <li><a href="#">Eğlence</a></li>
+                                </ul>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Önemli Linkler</h5>
+                                <ul class="kilimanjaro_links">
+                                    <li><a href="terms-and-conditions"><i class="fa fa-angle-right" aria-hidden="true"></i>Lisans Bilgisi</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Destek Hattı</a></li>
+                                    <li><a href="privacy-policy"><i class="fa fa-angle-right" aria-hidden="true"></i>Privacy</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Kariyer</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk Kuralları</a></li>
+                                    <li><a href="show-posts"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk & Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" >
+                            <div class="kilimanjaro_part">
+                                <h5>Son Postlar</h5>
+                                {% for post in posts %}
+                                    <div class="kilimanjaro_blog_area">
+                                        <div class="kilimanjaro_thumb">
+                                            <img class="img-fluid" src="https://3.bp.blogspot.com/--C1wpaf_S4M/W7V__10nRoI/AAAAAAAAK24/1NSfapuYSIY0f0wzXY9NgoH0FjQLT07YACKgBGAs/s1600/maxresdefault.jpg" alt="">
+                                        </div>
+                                        <a href="#">{{ post.title}}</a><br/>
+                                        <p class="kilimanjaro_date">{{ post.date_posted}} | {{ post.slug}}</p>
+                                        <p>{{ post.content|safe}}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Contact Section -->
+        <section id="contact" class="section has-img-bg pb-0" style="background: url('../static/images/section.jpg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 my-3">
+                        <h6 class="mb-0">Telefon numaramız</h6>
+                        <p class="mb-4">+ 123-456-7890</p>
+
+                        <h6 class="mb-0">Adresimiz</h6>
+                        <p class="mb-4">Anıttepe Mahallesi Gülseren Sokak 20/3 Çankaya/Ankara</p>
+
+                        <h6 class="mb-0">Email</h6>
+                        <p class="mb-0">trcyclop@gmail.com</p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-7">
+                        <form method="POST" action="send_messages">
+                            <h4 class="mb-4">Bize Mesaj Bırak</h4>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name" placeholder="İsim">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="email" class="form-control text-white rounded-0 bg-transparent" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject" placeholder="Konu">
+                                </div>
+                                <div class="form-group col-12" style="margin:auto ;">
+                                    <textarea name="message" id="" cols="30" rows="4" class="form-control text-white rounded-0 bg-transparent" placeholder="Mesaj"></textarea>
+                                </div>
+                                <div class="form-group col-12 mb-0">
+                                    <button type="submit" class="btn btn-primary rounded w-md mt-3">Gönder</button>
+                                </div>                          
+                            </div>                          
+                        </form>
+                    </div>
+                </div>
+                <!-- Page Footer -->
+                <footer class="mt-5 py-4 border-top border-secondary">
+                    <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>,Cycloptr Created By  <a href="https://cycloptr.com/" target="_blank"> Cyclop Inc.</a>  All rights reserved </p>     
+                </footer>
+                <!-- End of Page Footer -->  
+            </div>
+        </section> 
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <!-- <script src="js/scripts.js"></script> -->
+    </body>
+</html>

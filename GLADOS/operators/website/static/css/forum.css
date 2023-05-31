@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;600&display=swap');
+
+.navbar {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33px;
+  padding: 20px 0;
+  transition: all 0.5 ease;
+  background-color: #001424;
+  z-index: 1;
+}
+
+.navbar ul {
+  list-style: none;
+  text-align: center;
+}
+
+.navbar ul li {
+  display: inline-block;
+}
+
+.navbar ul li a {
+  float: left;
+  position: relative;
+  top: -15px;
+  font-size: 19px;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: #d1ebff;
+}
+
+.navbar ul li a:hover {
+  border-radius: 20px;
+  color: deepskyblue;
+  background: rgba(255,255,255,0.3);
+  width: auto;
+  height: auto;
+}
+
+.logo img {
+  float: left;
+  position: relative;
+  display: inline-block;
+  margin-top: auto;
+  margin-left: 30px;
+}
+
+.logo h1 {
+  float: left;
+  position: relative;
+  display: inline-block;
+  top: -15px;
+  text-align: center;
+  padding: 3px;
+}
+
+.profile img {
+  float: right;
+  position: relative;
+  display: inline-block;
+  margin-top: auto;
+  margin-right: 30px;
+}
+
+.forumblob a {
+  position: relative;
+  display: inline-block;
+  font-size: 19px;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: white;
+  width: 350px;
+  height: auto;
+}
+
+.forumblob a:hover {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+}
+
+.forumblob span {
+  color: lightblue;
+  font-size: 16px;
+  font-weight: 450;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 6px solid #ccc;
+  border-radius: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  text-align: center;
+  color: dodgerblue;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 23px;
+  font-weight:520;
+  letter-spacing: 3px;
+}
+
+input[type=text]:focus {
+  border: 6px solid #8ec3fb;
+}
+
+input[type=submit]:focus {
+  border: 6px solid #4496ee;
+}
+
+input[type=submit] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 5px solid #ccc;
+  border-radius: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  text-align: center;
+  color: dodgerblue;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 23px;
+  font-weight:520;
+  letter-spacing: 3px;
+}
+
+.replit-auth-button {
+  background: royalblue;
+  border-radius: 3px;
+  border: none;
+  padding: 0.5em;
+  color: azure;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  cursor: pointer;
+}
+
+.replit-auth-error {
+  color: red;
+}
+
+body {
+  background-color: #001424;
+}
+
+h1 {
+  color: lightcyan;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h2 {
+  color: lightcyan;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h3 {
+  color: lightcyan;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h4 {
+  color: lightcyan;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+p {
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+a:link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #99bbff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+a:active {
+  color: lightskyblue;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-decoration: none;
+}

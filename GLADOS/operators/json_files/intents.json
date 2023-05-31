@@ -1,0 +1,42 @@
+{"intents":[
+    {"tag":"greetings",
+     "patterns":["hello","hey","hi","good day","what's up?","how is it going","nasilsin","iyimisin?","iyi misin?"],
+     "responses": ["Hello","Hey","What can I do for you?"]
+    },
+    {"tag":"system opening",
+     "patterns":["sistemi aktiflestir","sistemi baslat","sistemi aktive et","sistemi ac","sistemi calistir"],
+     "responses":["sistemi baslat"]
+    },
+    {"tag":"system closing",
+     "patterns":["sistemi kapat","sistem kapat","sistemi durdur","sistem durdur","sistemi sonlandir"],
+     "responses":["sistemi kapat"]
+    },
+    {"tag":"Registration",
+     "patterns":["kimligi kaydet","yeni kimlik kaydet","kisinin kimligini kaydet","sistemi ac","sistemi calistir"],
+     "responses":["kimligi kaydet"]
+    },
+    {"tag":"Registration Complete",
+     "patterns":["yeni kisi tanimla","yeni kullanici tanimla","yeni kisiyi tani","kisiye izin sagla","kisiye yetki ver"],
+     "responses":["yeni kisi tanimla"]
+    },
+    {"tag":"Spotify open",
+     "patterns":["spotify ac","spotify baslat","spotify acabilir misin","spotify acabilirmisin","spotifyi ac","spotifyi acabilirmisin","spotifyi acabilir misin","spotify calistir","spotifyi calistir"],
+     "responses":["spotify aç"]
+    },
+    {"tag":"Spotify close",
+     "patterns":["spotify kapat","spotify sonlandir","spotify kapatir misin","spotifyi kapat","spotifyi kapatirmisin","spotifyi kapatir misin","spotifyi sonlandir","spotify sonlandir"],
+     "responses":["Spotify kapatılıyor"]
+    },
+    {"tag":"Spotify artist change",
+    "patterns":["sanatci degistir","sanatciyi degistir","baska sanatci ac","diger sanatcilari ac","sanatci secimini degistir","sanatciyi degistirir misin","sanatciyi degistirirmisin","sarkiyi degistir","baska sarki ac"],
+    "responses":["Sanatçı değiştiriliyor"]
+    },
+   {"tag":"Permission Granted",
+    "patterns":["isiklari ac","isik ac","isiklari acarmisin","isiklari acar misin","isiklari kapat","isiklari kapatirmisin","isiklari kapatir misin","isik kapat","isigi ac","isigi kapat","isiklari sondur","isik sondur","isiklari sondururmusun","isiklari sondurur musun","isigi sondur","isiklari yak","isigi yak","isiklari yakarmisin"],
+    "responses":["ışıkları aç"]
+   },
+   {"tag":"Weather Condition",
+    "patterns":["hava durumu nasil","hava durumunu soyle","hava durum acikla","hava durumu","hava durumu ne durumda","hava durumlarini incele","hava nasil","bugün hava nasil","bana havayi soyle"],
+    "responses":["hava durumu nasıl"]
+   }
+]}

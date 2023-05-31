@@ -1,0 +1,127 @@
+// COLORS
+$softorange: #F4A259;
+$tomatored: #F25C66;
+
+.close-container{
+  position: relative;
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  //margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  //margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+  
+}
+#flash{
+  background: whitesmoke;
+  background-color: whitesmoke;
+  border-radius: 0 20px 0 20px;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+label{
+  color:whitesmoke;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+.close{
+  margin:  0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container:hover label{
+  opacity: 1;
+}
+
+.close-container-flash{
+  position: relative;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-top: 10px;
+  //margin-top: 100px;
+  cursor: pointer;
+}
+
+.leftright-flash{
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  //margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft-flash{
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  //margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label{
+  color:transparent;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+.close-flash{
+  margin:  0 0 5px;
+  position: absolute;
+}
+
+.close-container-flash:hover .leftright-flash{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container-flash:hover .rightleft-flash{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container-flash:hover label{
+  opacity: 1;
+}
+

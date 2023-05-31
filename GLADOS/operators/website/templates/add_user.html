@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Cyclop Default Page" />
+        <meta name="author" content="Mert Ünübol" />
+        <title>Anasayfa</title>
+        <!-- <link rel="icon" type="image/x-icon" href="/static" /> -->
+        <!-- /*#######################################################*/ -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- /*#######################################################*/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        <script src="{{ url_for('static', filename='js/tilt.js') }}"></script>
+        <script>
+          const tilt = $('.box').tilt({scale:1.01});
+        </script>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/pricing.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/animation.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/teamcard.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/home_search_button.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <a class="navbar-brand" href="#page-top" style="margin-left: 50px;">CYCLOPTR</a>
+            <div class="container px-5">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" id="home"class="active" style="font-size:15px ;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" id="logout" style="font-size:15px ;">Çıkış Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/upload-image" id="uploadImage" style="font-size:15px ;">Fotoğraf Yükle</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/user-information" id="userinformation" style="font-size:15px ;">Kullanıcı Bilgisi</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard" id="dashboard" style="font-size:15px ;">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show-posts" id="show_posts" style="font-size:15px ;">Topluluk ve Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pricing" id="pricing" style="font-size:15px ;">Paket Ve Fiyatlar</a>
+                        </li>
+                        {% if current_user.id == 1 %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.admin')}}">Admin</a>
+                          </li>
+                        {% endif %}
+                    </ul>
+                    <form method="POST" action="{{ url_for('auth.search')}}" class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                        <button class="btn btn-outline-secondary" type="submit">Ara</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    <h1 class="masthead-heading mb-0">CYCLOP  Ev Güvenlik Sistemleri Ve Akıllı Asistanı</h1>
+                    <h2 class="masthead-subheading mb-0">Akıllı komutlarıyla hayatını kolaylaştırmak ve ev sistemleri için otomasyon hizmetleri barındırır.</h2>
+                    <a class="btn btn-primary btn-xl rounded-pill mt-5" style="height: 95px;" href="#scroll">Daha Fazla Bilgi İçin</a>
+                </div>
+            </div>
+            <div class="mouse-icon" style="margin-bottom:65px;"><div class="wheel"></div></div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+        <!-- Content section 1-->
+        <section id="scroll" style="margin-left: 100px;margin-right: 100px; margin-top: 50px;">
+            {% for message in get_flashed_messages() %}
+	
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                
+            {% endfor %}
+
+
+            {% if name %}
+                <h1>User Added!</h1>
+                <br/><br/>
+            <table class="table table-hover table-bordered table-striped">
+
+            {% for our_user in our_users %}
+                <tr>
+                <td>{{ our_user.id }}. <a href="{{ url_for('auth.update', id=our_user.id)}}">{{ our_user.name }}</a> - {{ our_user.email }} - {{ our_user.favorite_color }} - 
+                    <a href="{{ url_for('auth.delete', id=our_user.id)}}">Delete</a></td>
+                </tr>
+            {% endfor %}
+
+            </table>
+                
+
+            {% else %}
+                <h1>User List:</h1>
+                <br/>
+            <div class="shadow p-3 mb-5 bg-body rounded">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    {{ form.name.label(class="form-label") }}
+
+                    {{ form.name(class="form-control") }}
+                    <br/>
+
+                    {{ form.username.label(class="form-label") }}
+
+                    {{ form.username(class="form-control") }}
+                    <br/>
+
+                    {{ form.email.label(class="form-label") }}
+
+                    {{ form.email(class="form-control") }}
+                    <br/>
+                    
+                    {{ form.password_hash.label(class="form-label") }}
+
+                    {{ form.password_hash(class="form-control") }}
+                    <br/>
+
+                    {{ form.password_hash2.label(class="form-label") }}
+
+                    {{ form.password_hash2(class="form-control") }}
+                    <br/>
+
+                    {{ form.submit(class="btn btn-secondary") }}
+
+
+                </form>
+            </div>
+            <br/><br/><br/>
+            <table class="table table-hover table-bordered table-striped">
+
+            {% for our_user in our_users %}
+                <tr>
+                <td>{{ our_user.id }}. <a href="{{ url_for('auth.update', id=our_user.id)}}">{{ our_user.name }}</a> - {{our_user.username }} - {{ our_user.email }} - {{ our_user.favorite_color }} - 
+                PW: {{ our_user.password_hash }} - 
+                <a href="{{ url_for('auth.delete', id=our_user.id)}}">Delete</a></td>
+                </tr>
+            {% endfor %}
+
+            </table>
+            {% endif %}
+        </section>
+       
+        <!-- Footer-->
+        <!-- Footer-->
+        <footer class="kilimanjaro_area">
+            <!-- Top Footer Area Start -->
+            <div class="foo_top_header_one section_padding_100_70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Hakkımızda</h5>
+                                <p>It includes rich features & contents. It's designed & developed based on One Page/ Multi-page Layout,blog themes,world press themes and blogspot. You can use any layout from any demo anywhere.</p>
+                                <p>Our company is completely creative, clean & 100% responsive website. Put your business into next level with us.</p>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Social Medya</h5>
+                                <ul class="kilimanjaro_social_links">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                                    <li><a target="_blank" href="https://github.com/SAOCyper" ><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Konu Başlıkları</h5>
+                                <ul class=" kilimanjaro_widget">
+                                    <li><a href="#">Yüz Tanıma</a></li>
+                                    <li><a href="#">Ses Tanıma</a></li>
+                                    <li><a href="#">Yapay Zeka</a></li>
+                                    <li><a href="#">İnternet Bilgi Sistemi</a></li>
+                                    <li><a href="#">Chat Bot</a></li>
+                                    <li><a href="#">Ev Otomasyonu</a></li>
+                                    <li><a href="#">Güvenlik Sistemleri</a></li>
+                                    <li><a href="#">Eğlence</a></li>
+                                </ul>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Önemli Linkler</h5>
+                                <ul class="kilimanjaro_links">
+                                    <li><a href="terms-and-conditions"><i class="fa fa-angle-right" aria-hidden="true"></i>Lisans Bilgisi</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Destek Hattı</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Kariyer</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk Kuralları</a></li>
+                                    <li><a href="show-posts"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk & Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" >
+                            <div class="kilimanjaro_part">
+                                <h5>Son Postlar</h5>
+                                {% for post in posts %}
+                                    <div class="kilimanjaro_blog_area">
+                                        <div class="kilimanjaro_thumb">
+                                            <img class="img-fluid" src="https://3.bp.blogspot.com/--C1wpaf_S4M/W7V__10nRoI/AAAAAAAAK24/1NSfapuYSIY0f0wzXY9NgoH0FjQLT07YACKgBGAs/s1600/maxresdefault.jpg" alt="">
+                                        </div>
+                                        <a href="#">{{ post.title}}</a><br/>
+                                        <p class="kilimanjaro_date">{{ post.date_posted}} | {{ post.slug}}</p>
+                                        <p>{{ post.content|safe}}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+         <!-- Contact Section -->
+        <section id="contact" class="section has-img-bg pb-0" style="background: url('../static/images/section.jpg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 my-3">
+                        <h6 class="mb-0">Telefon numaramız</h6>
+                        <p class="mb-4">+ 123-456-7890</p>
+
+                        <h6 class="mb-0">Adresimiz</h6>
+                        <p class="mb-4">Hacettepe Üniversitesi Üniversiteler Mahallesi Hacettepe TeknoKent Ar-Ge Bina No:3 Çankaya/Ankara</p>
+
+                        <h6 class="mb-0">Email</h6>
+                        <p class="mb-0">info@website.com</p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-7">
+                        <form>
+                            <h4 class="mb-4">Bize Mesaj Bırak</h4>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name" placeholder="Name">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="email" class="form-control text-white rounded-0 bg-transparent" name="Email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject" placeholder="Subject">
+                                </div>
+                                <div class="form-group col-12" style="margin:auto ;">
+                                    <textarea name="message" id="" cols="30" rows="4" class="form-control text-white rounded-0 bg-transparent" placeholder="Message"></textarea>
+
+                                </div>
+                                <div class="form-group col-12 mb-0">
+                                    <button type="submit" class="btn btn-primary rounded w-md mt-3">Gönder</button>
+                                </div>                          
+                            </div>                          
+                        </form>
+                    </div>
+                </div>
+                <!-- Page Footer -->
+                <footer class="mt-5 py-4 border-top border-secondary">
+                    <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>,Cycloptr Created By  <a href="https://www.cycloptr.com" target="_blank"> Cyclop Inc.</a>  All rights reserved </p>     
+                </footer>
+                <!-- End of Page Footer -->  
+            </div>
+        </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <!-- <script src="js/scripts.js"></script> -->
+    </body>
+</html>

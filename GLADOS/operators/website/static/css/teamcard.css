@@ -1,0 +1,255 @@
+.our-team{
+        border: 1px solid #dedede;
+        text-align: center;
+        width: auto;
+        height:auto;
+        color: #8b2635;
+        overflow: hidden;
+        transition: all 0.3s ease 0s;
+    }
+    .our-team:hover{
+        background: #8b2635;
+        color: #fff;
+    }
+    .our-team .pic{ position: relative; }
+    .our-team .pic img{
+        width: 100%;
+        /* height: 300px; */
+        transition: all 0.3s ease 0s;
+    }
+    .our-team:hover .pic img{ transform: translateY(-20px); }
+    .our-team .social{
+        width: 50%;
+        height: 100%;
+        background: #8b2635;
+        padding: 20px 0;
+        margin: 0;
+        list-style: none;
+        position: absolute;
+        top: 0;
+        left: -50%;
+        transition: all 0.5s ease 0s;
+    }
+    .our-team:hover .social{ left: 0; }
+    .our-team .social li{ display: block;font-size: 12px; }
+    .our-team .social li a{
+        display: block;
+        padding: 10px 0;
+        font-size: 12px;
+        color: #444;
+        transition: all 0.5s ease 0s;
+    }
+    
+    .our-team .social li a:hover{ color: #ff9b19; }
+    .our-team .team-content{ padding: 25px 0; }
+    
+    .our-team .title{
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0 0 10px 0;
+    }
+    .our-team .post{
+        display: block;
+        font-size: 15px;
+        text-transform: capitalize;
+    }
+    @media only screen and (max-width: 990px){
+        .our-team{ margin-bottom: 30px; }
+    }
+
+    @media (min-width: 275px)
+    {  
+        .our-team .social li{ display: block;font-size:6px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 6px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .our-team .title{
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .our-team .post{
+            display: block;
+            font-size: 8px;
+            text-transform: capitalize;
+        }
+
+    }
+    @media (min-width: 320px)
+    {  
+        .our-team .social li{ display: block;font-size: 8px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 8px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .our-team .title{
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .our-team .post{
+            display: block;
+            font-size: 8px;
+            text-transform: capitalize;
+        }
+
+    }
+    @media (min-width: 576px)
+    {  
+        .our-team .social li{ display: block;font-size: 15px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 15px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .our-team .title{
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+        }
+        .our-team .post{
+            display: block;
+            font-size: 15px;
+            text-transform: capitalize;
+        }
+
+    }
+    @media (min-width: 768px)
+    {  
+        .our-team .social li{ display: block;font-size: 10px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 10px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .team-content .title{
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .team-content .post{
+            display: block;
+            font-size: 10px;
+            text-transform: capitalize;
+        }
+
+    }
+    @media (min-width: 992px)
+    {  
+        .our-team .social li{ display: block;font-size: 11px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 11px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .team-content .title{
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .team-content .post{
+            display: block;
+            font-size: 15px;
+            text-transform: capitalize;
+        }
+    }
+    @media (min-width: 1200px)
+    {  
+        .our-team .social li{ display: block;font-size: 13px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 13px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .team-content .title{
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .team-content .post{
+            display: block;
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+    }
+    @media (min-width: 1400px)
+    {  
+        .our-team .social li{ display: block;font-size: 14px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .team-content .title{
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .team-content .post{
+            display: block;
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+    }
+    @media (min-width: 1600px)
+    {  
+        .our-team{
+            max-width: 189px;
+            max-height: 189px;
+        }
+        .our-team .social li{ display: block;font-size: 15px; }
+        .our-team .social li a{
+            display: block;
+            padding: 10px 0;
+            font-size: 15px;
+            color: #444;
+            transition: all 0.5s ease 0s;
+        }
+        .team-content .title{
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0 0 10px 0;
+        }
+        .team-content .post{
+            display: block;
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+    }
+    

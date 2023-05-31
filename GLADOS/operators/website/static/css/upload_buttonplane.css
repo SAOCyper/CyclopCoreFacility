@@ -1,0 +1,55 @@
+
+@media (min-width: 280px)
+{   
+    #snap{
+        font-size: xx-small;
+    }
+    
+}
+
+@media (min-width: 320px)
+{   
+    #snap{
+        font-size: medium;
+    }
+    
+}
+
+@media (min-width: 576px)
+{   
+    #snap{
+        font-size: small;
+    }
+    
+}
+@media (min-width: 768px)
+{   
+    #snap{
+        font-size: small;
+    }
+    
+}
+@media (min-width: 992px)
+{   
+
+    #snap{
+        font-size: medium;
+    }
+    
+}
+@media (min-width: 1024px)
+{   
+
+    #snap{
+        font-size: medium;
+    }
+    
+}
+@media (min-width: 1200px)
+{   
+
+    #snap{
+        font-size: large;
+    }
+    
+}

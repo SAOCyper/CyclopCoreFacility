@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block title %}Upload{% endblock %} {% block content %}
+
+    <div class="containment" style="min-height: 90vh; margin-top: 100px; width:576px ;">
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='camera.js') }}"></script> -->
+        <div class="row" style="width: 576px;">
+            <div class="col" style="width: 576px;">
+                <p><span id="errorMsg"></span></p>
+                <h1 style="align-items: center;text-align: center;color: lavender; ;">Fotoğraf Yükle</h1>
+                <hr>
+                <form action="/upload-image" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label style="margin-top: 20px;margin-bottom: 20px;">Fotoğraf Seç</label>    
+                    <input oninput = "filesize(this);" type="file" class="custom-file-input" name="image" id="image" style=" width:100%;box-sizing: border-box;border: 5px solid #fff;color:chocolate;margin: auto;" required>    
+                </div> 
+                <div id="buttons" style="display:flex;position: relative;margin-top: 10px;margin-block-end: 50px;justify-content: space-between;"> 
+                    <button class="btn  btn-inside btn-boarder" type="submit"  id="upload_button" onclick="change();">
+                        <img src="https://i.cloudup.com/gBzAn-oW_S-2000x2000.png" width="28px" height="28px" id="plane" style="margin-top:12px;margin-left: 28px;">
+                        <div class="around around-boarder" onclick="ani(); anitwo();" style="display: flex;align-self: flex-start;"></div> 
+                    </button>
+                    <div class="bg"><img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" id="bg" width="20px" height="20px" style="opacity:0;"></div>
+                    <button  id="snap"  onclick="take_snapshot()" name="CameraOn" style="display: flex;justify-content: space-between;position: relative;margin-top: 10px;width: 100px;height: 30px;font-size: 9px;background-color: chocolate; color:whitesmoke;border-radius: 0 0 10px 10px;" value="CameraOn"><i class="fa fa-camera" style="font-size: 18px;margin-left: 7px;margin-top: 5px;color: whitesmoke;"></i>Kamera'dan Çek</button> 
+                </div>
+                <div class="video"id="canvas">
+                    <video id="video" playsinline autoplay="true"></video>
+                    <canvas id="results"></canvas>
+                </div>
+                <script type="text/javascript" src="{{ url_for('static', filename='webcam.min.js') }}" ></script> 
+                <script>
+                    function change() // no ';' here
+                        {
+                            var buttonval = document.getElementById("upload_button");
+                            if (buttonval.value=="Dosya Yükle") buttonval.value = " ";
+                            else buttonval.value = "Dosya Yükle";
+                        }
+                </script>
+                <script type="text/javascript">
+                    //Selector for your <video> element
+                    const video = document.querySelector('#video');
+                
+                    //Core
+                    window.navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            video.srcObject = stream;
+                            video.onloadedmetadata = (e) => {
+                                video.play();
+                            };
+                        })
+                        .catch( () => {
+                            alert('You have give browser the permission to run Webcam and mic ;( ');
+                        });
+                
+                </script>
+                <script>
+                    function take_snapshot() {
+                        let picture = Webcam.snap();
+                        
+                        Webcam.snap( function(data_uri) {
+                            // display results in page
+                            /*document.getElementById('results').innerHTML = 
+                            '<img src="'+data_uri+'"/>'; */
+                            document.querySelector('#results').href = picture;
+                        } );
+                    }
+                </script>
+                <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script> -->
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                            {% for messages in messages %}
+                                <li> {{ message }} 
+
+                                </li>
+                            {% endfor %}    
+                            </ul>
+                        {% endif %}
+                    {% endwith %}    
+                </p>
+                {% if filename %}
+                <div style="padding:20px;">
+                    <img src ="{{ url_for('auth.display_image', filename=filename) }}">
+                </div>
+                {% endif %} 
+            </form>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %} 
+    {% block script %} 
+    <script>
+        function filesize(elem){
+            document.cookie = 'filesize=${elem.files[0].size}';
+        }
+
+    </script>
+    {% endblock %} 

@@ -1,0 +1,144 @@
+.d-flex{
+    margin-left: 500px;
+}
+.form-control .me-2{
+    width: 200px;
+}
+
+
+@media (min-width: 280px)
+{   
+    .d-flex{
+        margin-left: 1px;
+    }
+    .d-flex .form-control{
+        width: 100px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 320px)
+{   
+    .d-flex{
+        margin-left: 1px;
+    }
+    .d-flex .form-control{
+        width: 100px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 576px)
+{   
+    .d-flex{
+        margin-left: 1px;
+    }
+    .d-flex .form-control{
+        width: 100px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 768px)
+{   
+    .d-flex{
+        margin-left: 1px;
+    }
+    .d-flex .form-control{
+        width: 100px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 992px)
+{   
+
+    .d-flex{
+        margin-left: 10px;
+    }
+    .d-flex .form-control{
+        width: 100px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 1024px)
+{   
+
+    .d-flex{
+        margin-left: 30px;
+    }
+    .d-flex .form-control{
+        width: 120px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 1200px)
+{   
+
+    .d-flex{
+        margin-left: 30px;
+    }
+    .d-flex .form-control{
+        width: 150px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 1400px)
+{   
+
+    .d-flex{
+        margin-left: 100px;
+    }
+    .d-flex .form-control{
+        width: 180px;
+    }
+    .d-flex .btn{
+        width: 50px;
+    }
+    .d-flex .btn .btn-outline-secondary{
+        font-size: 10px;
+    }
+}
+@media (min-width: 1600px)
+{   
+
+    .d-flex{
+        margin-left: 150px;
+    }
+    .d-flex .form-control{
+        width: 200px;
+    }
+}

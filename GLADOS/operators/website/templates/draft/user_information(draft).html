@@ -1,0 +1,180 @@
+{% extends "base.html" %} {% block title %}User Information{% endblock %} {% block content %}
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+    <script type="text/javascript">
+        const btn = document.querySelector("#btn");
+        const btnText = document.querySelector("#btnText");
+
+        btn.onclick = () => {
+            btnText.innerHTML = "Thanks";
+            btn.classList.add("active");
+        };
+    </script>
+    <div class="containment" style="overflow: scroll;">
+        <form method="POST">
+                <form action="/user-information" method="post" id="myForm" onsubmit="addData(); return false;" required>
+                            <div class="inbar">
+                                <input class="form-control " name="spotify_username" id ="spotify_username" type="text" required="required" style="background: transparent;"/>
+                                <span style="color: whitesmoke;font-family: poppins;">Spotify Kullanıcı Adı</span>
+                            </div>
+                            <div class="inbar">
+                                <input class="form-control " name="spotify_email" id="spotify_email" required="required" style="background: transparent;"/>
+                                <span style="color: whitesmoke;font-family: poppins;" class="small mb-1">Spotify Email</span>
+                            </div>
+                            <div class="inbar">
+                                <input class="form-control " name="spotify_password" id="spotify_password" required="required" style="background: transparent;"/>
+                                <span style="color: whitesmoke;font-family: poppins;">Spotify Şifresi</span>
+                            </div>
+                            <div class="inbar"> 
+                                <input class="form-control " name="netflix_email" id="netflix_email" required="required" style="background: transparent;"/>
+                                <span style="color: whitesmoke; font-family: poppins;">Netflix Email</span>
+                            </div>
+                            <div class="inbar">  
+                                <input class="form-control" id="netflix_password" name="netflix_password" required="required" style="background: transparent;"/>
+                                <span style="color: whitesmoke;font-family: poppins;">Netflix Şifresi</span>
+                            </div>
+                            <form action="/">
+                                <div  class="col-sm-4 form-group mt-4 mb-0" style="display: flex;width: 350px; height: 50px;">
+                                    <button class="button">
+                                        <p id="btnText" style="text-align: center;font-size: 20px;background: transparent;">Submit</p>
+                                    </button>
+                                    <input type="reset" value="Temizle" style="width: 120px;height: 30px;border: none;outline: none;background: #2f2f2f;color: greenyellow;font-size: 20px;border-radius: 40px;text-align: center;box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);position: relative;overflow: hidden;cursor: pointer;">
+                                </div>
+                            </form>
+
+                <h1 style="color:whitesmoke ;margin-top: 70px;">Kullanıcı Bilgileri</h1>
+                <hr>
+                <form action="/user-information" method="POST" enctype="multipart/form-data"></form>
+                <table style="color: whitesmoke;border: 1;" class="user_information" id="user_information" width="100%"  cellspacing="15">
+                    <tr>
+                        <th>
+                            <td style="background-color:transparent ;" class="spotify_username">Spotify Adı
+                            {% for spotify_username in user.spotify_username %}
+                            <button type="button" style="background-color: transparent;border: none;"class="close" id="close_spotify_username" onClick="deleteSpotifyUsername({{ spotify_username.id }})">
+                                <div class="close-container">
+                                    <div class="leftright"></div>
+                                    <div class="rightleft"></div>
+                                    <label class="close">Delete</label>
+                                </div>
+                            </button>
+                            {% endfor %}    
+                            </th>
+                        </th>
+                        <th>
+                            <td style="background-color:transparent ;" class="spotify_email">Spotify Email
+                                {% for spotify_email in user.spotify_email %}
+                                <button type="button" style="background-color: transparent;border: none;"class="close" id="close_spotify_email" onClick="deleteSpotifyEmail({{ spotify_email.id }})">
+                                    <div class="close-container">
+                                        <div class="leftright"></div>
+                                        <div class="rightleft"></div>
+                                        <label class="close">Delete</label>
+                                    </div>
+                                </button>
+                                {% endfor %}
+                            </th>
+                        </th>
+                        <th>
+                            <td style="background-color:transparent ;" class="spotify_password">Spotify Şifresi
+                                {% for spotify_password in user.spotify_password %}
+                                <button type="button" style="background-color: transparent;border: none;"class="close" id="close_spotify_password" onClick="deleteSpotifyPassword({{ spotify_password.id }})">
+                                    <div class="close-container">
+                                        <div class="leftright"></div>
+                                        <div class="rightleft"></div>
+                                        <label class="close">Delete</label>
+                                    </div>
+                                </button>
+                                {% endfor %}
+                            </th>
+                        </th>
+                        <th>
+                            <td style="background-color:transparent ;" class="netflix_email">Netflix Email
+                                {% for netflix_email in user.netflix_email %}
+                                <button type="button" style="background-color: transparent;border: none;"class="close" id="close_netflix_email" onClick="deleteNetflixEmail({{ netflix_email.id }})">
+                                    <div class="close-container">
+                                        <div class="leftright"></div>
+                                        <div class="rightleft"></div>
+                                        <label class="close">Delete</label>
+                                    </div>
+                                </button>
+                                {% endfor %}
+                            </th>
+                        </th>
+                        <th>
+                            <td style="background-color:transparent ;" class="netflix_password">Netflix Şifresi
+                                {% for netflix_password in user.netflix_password %}
+                                <button type="button" style="background-color: transparent;border: none;"class="close" id="close_netflix_password" onClick="deleteNetflixPassword({{ netflix_password.id }})">
+                                    <div class="close-container">
+                                        <div class="leftright"></div>
+                                        <div class="rightleft"></div>
+                                        <label class="close">Delete</label>
+                                    </div>
+                                </button>
+                                {% endfor %}
+                            </td>
+                        </th>
+                    </tr>
+                    
+                </table>
+                </form>
+                </form>  
+                 
+                <script>
+                    var click = document.getElementById('submit');
+                    click.addEventListener('click', addData);
+                    
+                    var arr = new Array();
+                    function addData(){
+                        DeleteData();
+                        getData();
+                        arr.push({
+                            spotify_username:document.getElementById('spotify_username').value,
+                            spotify_email:document.getElementById('spotify_email').value,
+                            spotify_password:document.getElementById('spotify_password').value,
+                            netflix_email:document.getElementById('netflix_email').value,
+                            netflix_password:document.getElementById('netflix_password').value,
+                            
+                        });
+                            localStorage.setItem('spotify_username', $('#spotify_username').val());
+                            localStorage.setItem('spotify_email', $('#spotify_email').val());
+                            localStorage.setItem('spotify_password', $('#spotify_password').val());
+                            localStorage.setItem('netflix_email', $('#netflix_email').val());
+                            localStorage.setItem('netflix_password', $('#netflix_password').val());
+                            localStorage.setItem("localData", JSON.stringify(arr));
+                    }
+
+                    function getData(){
+                        var str = localStorage.getItem("localData");
+                        if (str!= null)
+                            arr = JSON.parse(str);
+                    }
+
+                    function DeleteData(){
+                    localStorage.clear();
+                    }
+
+                </script>   
+                <script>
+                    window.onload = function() {
+                        var tbl = document.getElementById("user_information");
+                        var row = tbl.insertRow();
+                        var cell1 = row.insertCell();
+                        var cell2 = row.insertCell();
+                        var cell3 = row.insertCell();
+                        var cell4 = row.insertCell();
+                        var cell5 = row.insertCell();
+                        cell1.innerHTML =localStorage.getItem('spotify_username');
+                        cell2.innerHTML =localStorage.getItem('spotify_email');
+                        cell3.innerHTML =localStorage.getItem('spotify_password');
+                        cell4.innerHTML =localStorage.getItem('netflix_email');
+                        cell5.innerHTML =localStorage.getItem('netflix_password'); 
+                    } 
+                </script>                        
+    </div>     
+    <footer class="py-5 bg-black">
+        <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; cycloptr.com 2021</p></div>
+    </footer>           
+{% endblock %} 
+<form action="{{url_for('auth.user-information')}}" method="POST"></form>

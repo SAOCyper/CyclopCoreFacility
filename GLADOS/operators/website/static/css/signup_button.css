@@ -1,0 +1,373 @@
+svg {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+}
+
+#gooey-button {
+  padding: 0 0 10px;
+  font-size: 26px;
+  border: none;
+  width: auto;
+  height: auto;
+  color: #0c1016;
+  filter: url("#gooey");
+  position: absolute;
+  display: block;
+  background-color: #00FF80;
+}
+#gooey-button:focus {
+  outline: none;
+}
+#gooey-button .bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+#gooey-button .bubbles .bubble {
+  background-color: #00FF80;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: -1;
+}
+#gooey-button .bubbles .bubble:nth-child(1) {
+  left: 17px;
+  width: 25px;
+  height: 25px;
+  animation: move-1 3.02s infinite;
+  animation-delay: 0.2s;
+}
+#gooey-button .bubbles .bubble:nth-child(2) {
+  left: 31px;
+  width: 25px;
+  height: 25px;
+  animation: move-2 3.04s infinite;
+  animation-delay: 0.4s;
+}
+#gooey-button .bubbles .bubble:nth-child(3) {
+  left: 90px;
+  width: 25px;
+  height: 25px;
+  animation: move-3 3.06s infinite;
+  animation-delay: 0.6s;
+}
+#gooey-button .bubbles .bubble:nth-child(4) {
+  left: 19px;
+  width: 25px;
+  height: 25px;
+  animation: move-4 3.08s infinite;
+  animation-delay: 0.8s;
+}
+#gooey-button .bubbles .bubble:nth-child(5) {
+  left: 19px;
+  width: 25px;
+  height: 25px;
+  animation: move-5 3.1s infinite;
+  animation-delay: 1s;
+}
+#gooey-button .bubbles .bubble:nth-child(6) {
+  left: 32px;
+  width: 25px;
+  height: 25px;
+  animation: move-6 3.12s infinite;
+  animation-delay: 1.2s;
+}
+#gooey-button .bubbles .bubble:nth-child(7) {
+  left: 19px;
+  width: 25px;
+  height: 25px;
+  animation: move-7 3.14s infinite;
+  animation-delay: 1.4s;
+}
+#gooey-button .bubbles .bubble:nth-child(8) {
+  left: 84px;
+  width: 25px;
+  height: 25px;
+  animation: move-8 3.16s infinite;
+  animation-delay: 1.6s;
+}
+#gooey-button .bubbles .bubble:nth-child(9) {
+  left: 86px;
+  width: 25px;
+  height: 25px;
+  animation: move-9 3.18s infinite;
+  animation-delay: 1.8s;
+}
+#gooey-button .bubbles .bubble:nth-child(10) {
+  left: 88px;
+  width: 25px;
+  height: 25px;
+  animation: move-10 3.2s infinite;
+  animation-delay: 2s;
+}
+
+#gooey-button:hover {
+  background-color: aqua;
+}
+#gooey-button:hover .bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+#gooey-button:hover .bubbles .bubble {
+  background-color: aqua;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: -1;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(1) {
+  left: 68px;
+  width: 25px;
+  height: 25px;
+  animation: move-1 3.02s infinite;
+  animation-delay: 0.2s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(2) {
+  left: 65px;
+  width: 25px;
+  height: 25px;
+  animation: move-2 3.04s infinite;
+  animation-delay: 0.4s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(3) {
+  left: 64px;
+  width: 25px;
+  height: 25px;
+  animation: move-3 3.06s infinite;
+  animation-delay: 0.6s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(4) {
+  left: 85px;
+  width: 25px;
+  height: 25px;
+  animation: move-4 3.08s infinite;
+  animation-delay: 0.8s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(5) {
+  left: 36px;
+  width: 25px;
+  height: 25px;
+  animation: move-5 3.1s infinite;
+  animation-delay: 1s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(6) {
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  animation: move-6 3.12s infinite;
+  animation-delay: 1.2s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(7) {
+  left: 23px;
+  width: 25px;
+  height: 25px;
+  animation: move-7 3.14s infinite;
+  animation-delay: 1.4s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(8) {
+  left: 82px;
+  width: 25px;
+  height: 25px;
+  animation: move-8 3.16s infinite;
+  animation-delay: 1.6s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(9) {
+  left: 75px;
+  width: 25px;
+  height: 25px;
+  animation: move-9 3.18s infinite;
+  animation-delay: 1.8s;
+}
+#gooey-button:hover .bubbles .bubble:nth-child(10) {
+  left: 57px;
+  width: 25px;
+  height: 25px;
+  animation: move-10 3.2s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes move-1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -66px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -120px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -58px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-4 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -109px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-5 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -70px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-6 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -78px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-7 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -53px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-8 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -57px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-9 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -129px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@keyframes move-10 {
+  0% {
+    transform: translate(0, 0);
+  }
+  99% {
+    transform: translate(0, -88px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+@media (min-width: 280px) {
+  #gooey-button {
+    margin-left: 20%;
+  }
+}
+@media (min-width: 320px) {
+  #gooey-button {
+    margin-left: 25%;
+  }
+}
+@media (min-width: 410px) {
+  #gooey-button {
+    margin-left: 28%;
+  }
+}
+@media (min-width: 540px) {
+  #gooey-button {
+    margin-left: 32%;
+  }
+}
+@media (min-width: 768px) {
+  #gooey-button {
+    margin-left: 37%;
+  }
+}
+@media (min-width: 992px) {
+  #gooey-button {
+    margin-left: 33%;
+    margin-bottom: 10%;
+  }
+}
+@media (min-width: 1024px) {
+  #gooey-button {
+    margin-left: 40%;
+    margin-bottom: 10%;
+  }
+}
+@media (min-width: 1200px) {
+  #gooey-button {
+    margin-left: 41%;
+    margin-bottom: 10%;
+  }
+}
+@media (min-width: 1400px) {
+  #gooey-button {
+    margin-left: 43%;
+    margin-bottom: 10%;
+  }
+}
+@media (min-width: 1600px) {
+  #gooey-button {
+    margin-left: 46%;
+    margin-bottom: 10%;
+  }
+}/*# sourceMappingURL=signup_button.css.map */

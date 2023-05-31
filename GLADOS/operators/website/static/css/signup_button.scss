@@ -1,0 +1,180 @@
+$prime: #00FF80;
+$second: #0c1016;
+
+svg{
+    position: absolute;
+    top: -4000px;
+    left: -4000px;
+
+}
+    
+#gooey-button{
+    padding: 0 0 10px;
+    font-size: 26px;
+    border: none;
+    width: auto;
+    height: auto;
+    color: $second;
+    filter: url('#gooey');
+    position: absolute;
+    display: block;
+    background-color: $prime;
+
+    &:focus{
+        outline: none;
+    }
+        
+
+    .bubbles{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        .bubble{
+            background-color: $prime;
+            border-radius: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: -1;
+
+            @for $bubble from 1 through 10{
+                &:nth-child(#{$bubble}){
+                    $size: 25px;
+                    left: (random(80) + 10)+px;
+                    width: $size;
+                    height: $size;
+                    animation: move-#{$bubble} #{3 + $bubble*0.02}s infinite;
+                    animation-delay: #{$bubble*0.2}s;
+                }
+            }        
+        }
+            
+    }
+        
+}
+#gooey-button:hover{
+    background-color: aqua;
+    .bubbles{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        .bubble{
+            background-color:aqua ;
+            border-radius: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: -1;
+
+            @for $bubble from 1 through 10{
+                &:nth-child(#{$bubble}){
+                    $size: 25px;
+                    left: (random(80) + 10)+px;
+                    width: $size;
+                    height: $size;
+                    animation: move-#{$bubble} #{3 + $bubble*0.02}s infinite;
+                    animation-delay: #{$bubble*0.2}s;
+                }
+            }        
+        }
+            
+    }
+}    
+                
+@for $bubble from 1 through 10{
+    @keyframes move-#{$bubble}{
+        0%{
+            transform: translate(0, 0);
+        }
+            
+        99%{
+            transform: translate(0, -(random(80) + 50)+px);
+        }
+            
+        100%{
+            transform: translate(0, 0);
+            opacity: 0;
+        }                
+    }      
+}
+
+
+
+@media (min-width: 280px)
+{   
+    #gooey-button{
+        margin-left:20% ;
+    }
+}
+
+@media (min-width: 320px)
+{   
+    #gooey-button{
+        margin-left:25% ;
+    }
+}
+@media (min-width: 410px)
+{   
+    #gooey-button{
+        margin-left:28% ;
+    }
+}
+@media (min-width: 540px)
+{   
+    #gooey-button{
+        margin-left:32% ;
+    }
+}
+@media (min-width: 768px)
+{   
+    #gooey-button{
+        margin-left:37% ;
+    }
+}
+@media (min-width: 992px)
+{   
+
+    #gooey-button{
+        margin-left:33% ;
+        margin-bottom: 10%;
+    }
+}
+@media (min-width: 1024px)
+{   
+
+    #gooey-button{
+        margin-left:40% ;
+        margin-bottom: 10%;
+    }
+}
+@media (min-width: 1200px)
+{   
+
+    #gooey-button{
+        margin-left:41% ;
+        margin-bottom: 10%;
+    }
+}
+@media (min-width: 1400px)
+{   
+
+    #gooey-button{
+        margin-left:43% ;
+        margin-bottom: 10%;
+    }
+}
+@media (min-width: 1600px)
+{   
+    #gooey-button{
+        margin-left:46% ;
+        margin-bottom: 10%;
+    }
+}

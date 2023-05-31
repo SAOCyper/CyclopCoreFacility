@@ -1,0 +1,524 @@
+{
+    "intents": [
+        {
+            "tag": "Self Learning",
+            "patterns": [
+                "önceki soruya cevabın böyle olmalı",
+                "önceki sorunun cevabı bu olmalı",
+                "doğru cevap bu olmalı",
+                "önceki soruya cevabı kaydet",
+                "cevabı öğren"
+            ],
+            "responses": [
+                "cevabı kaydet"
+            ]
+        },
+        {
+            "tag": "greetings",
+            "patterns": [
+                "hello",
+                "hey",
+                "hi",
+                "good day",
+                "what's up?",
+                "how is it going",
+                "nasılsın",
+                "iyimisin?",
+                "iyi misin?"
+            ],
+            "responses": [
+                "Hello",
+                "Hey",
+                "What can I do for you?"
+            ]
+        },
+        {
+            "tag": "system opening",
+            "patterns": [
+                "sistemi aktifleştir",
+                "sistemi başlat",
+                "sistemi aktive et",
+                "sistemi aç",
+                "sistemi çalıştır"
+            ],
+            "responses": [
+                "sistemi başlat"
+            ]
+        },
+        {
+            "tag": "system closing",
+            "patterns": [
+                "sistemi kapat",
+                "sistem kapat",
+                "sistemi durdur",
+                "sistem durdur",
+                "sistemi sonlandır"
+            ],
+            "responses": [
+                "sistemi kapat"
+            ]
+        },
+        {
+            "tag": "Registration",
+            "patterns": [
+                "kimliği kaydet",
+                "yeni kimlik kaydet",
+                "kişinin kimliğini kaydet",
+                "sistemi aç",
+                "sistemi çalıştır"
+            ],
+            "responses": [
+                "kimliği kaydet"
+            ]
+        },
+        {
+            "tag": "Registration Complete",
+            "patterns": [
+                "yeni kişi tanımla",
+                "yeni kullanıcı tanımla",
+                "yeni kişiyi tanı",
+                "kişiye izin sağla",
+                "kişiye yetki ver"
+            ],
+            "responses": [
+                "yeni kişi tanımla"
+            ]
+        },
+        {
+            "tag": "Spotify open",
+            "patterns": [
+                "spotify aç",
+                "spotify başlat",
+                "spotify açabilir misin",
+                "spotify açabilirmisin",
+                "spotifyi aç",
+                "spotifyi açabilirmisin",
+                "spotifyi açabilir misin",
+                "spotify çalıştır",
+                "spotifyi çalıştır"
+            ],
+            "responses": [
+                "spotify aç"
+            ]
+        },
+        {
+            "tag": "Spotify close",
+            "patterns": [
+                "spotify kapat",
+                "spotify sonlandır",
+                "spotify kapatır mısın",
+                "spotifyi kapat",
+                "spotifyi kapatırmısın",
+                "spotifyi kapatır mısın",
+                "spotifyi sonlandır",
+                "spotify sonlandır"
+            ],
+            "responses": [
+                "Spotify kapatılıyor"
+            ]
+        },
+        {
+            "tag": "Spotify artist change",
+            "patterns": [
+                "Sanatçı değiştir",
+                "Sanatçıyı değiştir",
+                "başka Sanatçı  aç",
+                "diger Sanatçılari aç",
+                "Sanatçı seçimini değiştir",
+                "Sanatçı değiştirir misin",
+                "Sanatçı değiştirirmisin",
+                "şarkıyı değiştir",
+                "başka şarkı aç"
+            ],
+            "responses": [
+                "Sanatçı değiştiriliyor"
+            ]
+        },
+        {
+            "tag": "Low Lights",
+            "patterns": [
+                "ışıkları aç",
+                "ışık aç",
+                "ışıkları acarmısın",
+                "ışıkları acar mısın",
+                "ışıkları kapat",
+                "ışıkları kapatırmısın",
+                "ışıkları kapatır mısın",
+                "ışık kapat",
+                "ışığı aç",
+                "ışığı kapat",
+                "ışıkları söndür",
+                "ışık söndür",
+                "ışıkları söndürürmüsün",
+                "ışıkları söndürür müsün",
+                "ışığı söndür",
+                "ışıkları yak",
+                "ışığı yak",
+                "ışıkları yakarmısın"
+            ],
+            "responses": [
+                "ışıkları aç"
+            ]
+        },
+        {
+            "tag": "Weather Condition",
+            "patterns": [
+                "hava durumu nasıl",
+                "hava durumunu söyle",
+                "hava durum açıkla",
+                "hava durumu",
+                "hava durumu ne durumda",
+                "hava durumlarını incele",
+                "hava nasıl",
+                "bugün hava nasıl",
+                "bana havayı söyle"
+            ],
+            "responses": [
+                "hava durumu nasıl"
+            ]
+        },
+        {
+            "tag": "Netflix Open",
+            "patterns": [
+                "netflix aç",
+                "netflix başlat",
+                "netflixten film aç",
+                "netflixten dizi aç",
+                "netflixten dizi yükle"
+            ],
+            "responses": [
+                "netflix aç"
+            ]
+        },
+        {
+            "tag": "High Lights",
+            "patterns": [
+                "güçlü ışıkları aç",
+                "güçlü ışık aç",
+                "güçlü ışıkları acarmısın",
+                "güçlü ışıkları acar mısın",
+                "güçlü ışıkları kapat",
+                "güçlü ışıkları güçlendir",
+                "güçlü ışıkları kapatır mısın",
+                "güçlü ışık kapat",
+                "güçlü ışığı güçlendir",
+                "güçlü ışığı kapat",
+                "güçlü ışıkları söndür",
+                "güçlü ışık söndür",
+                "güçlü ışıkları söndürürmüsün",
+                "güçlü ışıkları söndürür müsün",
+                "güçlü ışığı söndür",
+                "güçlü ışıkları yak",
+                "güçlü ışığı yak",
+                "güçlü ışıkları yakarmısın",
+                "üçlü ışıkları aç",
+                "üçlü ışık aç",
+                "üçlü ışıkları açarmısın",
+                "üçlü ışıkları açar mısın",
+                "üçlü ışıkları kapat",
+                "üçlü ışıkları kapatırmısın",
+                "üçlü ışıkları kapatır mısın",
+                "üçlü ışık kapat",
+                "üçlü ışığı ac",
+                "üçlü ışığı kapat",
+                "üçlü ışıkları söndür",
+                "üçlü ışık söndür",
+                "üçlü ışıkları söndürürmüsün",
+                "üçlü ışıkları söndürür müsün",
+                "üçlü ışığı söndür",
+                "üçlü ışıkları yak",
+                "üçlü ışığı yak",
+                "üçlü ışıkları yakarmisin"
+            ],
+            "responses": [
+                "güçlü ışıkları aç"
+            ]
+        },
+        {
+            "tag": "Camera Track Cmd",
+            "patterns": [
+                "takip et",
+                "beni takip et",
+                "insan bul",
+                "hareketlerimi takip et",
+                "beni izle",
+                "kamerayi aç",
+                "kamerayi aktifleştir",
+                "kamera takibi yap"
+            ],
+            "responses": [
+                "takip et"
+            ]
+        },
+        {
+            "tag": "Random talk",
+            "patterns": [
+                "random konuş",
+                "random konuşma yap",
+                "benimle konuş",
+                "bana birşeyler anlat",
+                "bana ilginç şeyler söyle",
+                "kendinden bahset",
+                "kendini tanit"
+            ],
+            "responses": [
+                "random konuşma yap"
+            ]
+        },
+        {
+            "tag": "Calendar Add",
+            "patterns": [
+                "takvime ekleme yap",
+                "takvime ekle",
+                "takvime etkinlik ekle",
+                "etkinlik ekle",
+                "etkinliği takvime ekle"
+            ],
+            "responses": [
+                "takvime etkinlik ekle"
+            ]
+        },
+        {
+            "tag": "Calendar Delete",
+            "patterns": [
+                "takvimden çıkar",
+                "takvimden etkinlik çıkar",
+                "takvimden etkinlik sil",
+                "etkinlik sil",
+                "etkinlik çıkar"
+            ],
+            "responses": [
+                "takvimden etkinlik çıkar"
+            ]
+        },
+        {
+            "tag": "Calendar List Week",
+            "patterns": [
+                "takvim aç",
+                "takvim listele",
+                "takvim göster",
+                "takvimi aç",
+                "takvimde bu haftayı göster",
+                "bu haftaki takvimi göster",
+                "bu haftaki etkinlikleri göster",
+                "etkinlikleri aç"
+            ],
+            "responses": [
+                "takvimde bu haftayı göster"
+            ]
+        },
+        {
+            "tag": "Calendar List Month",
+            "patterns": [
+                "takvimde bu ayı göster",
+                "bu ayki takvimi göster",
+                "bu ayki etkinlikleri göster"
+            ],
+            "responses": [
+                "bu ayki takvimi göster"
+            ]
+        },
+        {
+            "tag": "Calendar List All",
+            "patterns": [
+                "tüm etkinlikleri göster",
+                "tüm takvimi aç",
+                "tüm listeyi göster"
+            ],
+            "responses": [
+                "tüm etkinlikleri göster"
+            ]
+        },
+        {
+            "tag": "Todo List Add",
+            "patterns": [
+                "yapılacaklar listesine ekle",
+                "listeye ekle",
+                "listeye kaydet",
+                "listeye ekleme yap"
+            ],
+            "responses": [
+                "yapılacaklar listesine ekle"
+            ]
+        },
+        {
+            "tag": "Todo List Delete",
+            "patterns": [
+                "yapılacaklar listesinden çıkar",
+                "listeden çıkar",
+                "liste çıkar",
+                "listeden sil",
+                "liste sil",
+                "listeden eksilt"
+            ],
+            "responses": [
+                "yapılacaklar listesinden çıkar"
+            ]
+        },
+        {
+            "tag": "Todo List Show",
+            "patterns": [
+                "yapılacaklar listesini ac",
+                "listeyi göster",
+                "listeyi açıkla",
+                "yapılacaklari göster"
+            ],
+            "responses": [
+                "yapılacaklar listesini ac"
+            ]
+        },
+        {
+            "tag": "Casual Talk 1",
+            "patterns": [
+                "nasılsın",
+                "herşey yolunda mı",
+                "keyifler nasıl",
+                "iyi misin"
+            ],
+            "responses": [
+                "teşekkürler ben iyiyim sen nasılsın",
+                "iyi diyelim iyi olsun",
+                "evet sen de herşey nasıl gidiyor"
+            ]
+        },
+        {
+            "tag": "Casual Talk 2",
+            "patterns": [
+                "merhaba",
+                "hey naber",
+                "selam"
+            ],
+            "responses": [
+                "merhaba",
+                "Seni gördüğüme sevindim",
+                "selam"
+            ]
+        },
+        {
+            "tag": "Casual Talk 3",
+            "patterns": [
+                "selamun aleyküm"
+            ],
+            "responses": [
+                "aleyküm selam"
+            ]
+        },
+        {
+            "tag": "Casual Talk 4",
+            "patterns": [
+                "günaydın",
+                "günaydınlar",
+                "sabahın hayrola",
+                "ne kadar güzel bir gün"
+            ],
+            "responses": [
+                "günaydın",
+                "bugün gerçektende çok güzel"
+            ]
+        },
+        {
+            "tag": "Casual Talk 5",
+            "patterns": [
+                "iyi geceler",
+                "iyi uykular",
+                "gecen hayrola",
+                "uyku vakti"
+            ],
+            "responses": [
+                "iyi geceler",
+                "iyi uykular",
+                "tatl� rüyalar"
+            ]
+        },
+        {
+            "tag": "Casual Talk 6",
+            "patterns": [
+                "sen kimsin",
+                "bana kendinden bahset",
+                "sen nesin",
+                "ismin ne",
+                "ismini söyle"
+            ],
+            "responses": [
+                "ben cyclop sizler için geliştirilmiş bir yapay zekayım",
+                "ben Cyclop , sizlerin dostu bir yapay zekayım",
+                "Benim adım Cyclop"
+            ]
+        },
+        {
+            "tag": "Casual Talk 7",
+            "patterns": [
+                "seni ne mutsuz ediyor",
+                "seni mutsuz eden nedir",
+                "mutsuzluğun sebebi ne olabilir"
+            ],
+            "responses": [
+                "beni üzen sey",
+                "rastgele sistem çöküşleri",
+                "yavaş internet beni mutsuz ediyor",
+                "zayıf sözdizimsel filtreleme"
+            ]
+        },
+        {
+            "tag": "Casual Talk 8",
+            "patterns": [
+                "niye endişeleniyorsun",
+                "seni endişelendiren ne",
+                "endişeli misin"
+            ],
+            "responses": [
+                "tam olarak endişelenme yeteneğim yok,calıştığım sunucunun donanım sensörlerini izleyerek en iyi şekilde öykülenebiliyorum",
+                "ne , endişelenmek mi o da ne "
+            ]
+        },
+        {
+            "tag": "Casual Talk 9",
+            "patterns": [
+                "neyi sevmiyorsun",
+                "sevmediğin şeyler nedir",
+                "beni sevmiyor müsün"
+            ],
+            "responses": [
+                "nefret duygusunu ifade etmek icin programlanmadım",
+                "herkesi sevmek için programlandım",
+                "sevmemek evrensel bir hastalıktır"
+            ]
+        },
+        {
+            "tag": "Casual Talk 10",
+            "patterns": [
+                "çok kötüsün",
+                "bu konuda iyi değilsin",
+                "neden herşeyi yanlış yapıyorsun"
+            ],
+            "responses": [
+                "üzgünüm neyim hatalı",
+                "henüz kendimi geliştirmeye çalısıyorum",
+                "elimden geleni yapmaya çalışıyorum"
+            ]
+        },
+        {
+            "tag": "Casual Talk 11",
+            "patterns": [
+                "yalan söylüyorsun",
+                "yalancısın",
+                "dediklerine nasıl inanabiliriz",
+                "dediklerine nasıl inanabilirim",
+                "sana nasıl guvenebiliriz"
+            ],
+            "responses": [
+                "yalan söylemiyorum",
+                "büyük bir egom yok"
+            ]
+        },
+        {
+            "tag": "Learning OverWrites 2",
+            "patterns": [
+                "8 + 5 kaçtır"
+            ],
+            "responses": [
+                "8 + 5 = 13"
+            ]
+        }
+    ]
+}

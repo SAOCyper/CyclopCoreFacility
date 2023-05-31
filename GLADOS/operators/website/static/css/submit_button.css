@@ -1,0 +1,4 @@
+
+.button{
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);width: 120px;height: 30px;border: none;outline: none;background: #2f2f2f;color: greenyellow;font-size: 22px;border-radius: 50px;text-align: center;position: relative;overflow: hidden;cursor: pointer;
+}

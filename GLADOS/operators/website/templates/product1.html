@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Shopping Cart using Python Flask PostgreSQL</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- /*#######################################################*/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/pricing.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/animation.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/bootstrapmodified.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/home_search_button.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body id="page-top">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  -->
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <a class="navbar-brand" href="#page-top" style="margin-left: 50px;">CYCLOPTR</a>
+        <div class="container px-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" id="home"class="active" style="font-size:15px ;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" id="logout" style="font-size:15px ;">Çıkış Yap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/upload-image" id="uploadImage" style="font-size:15px ;">Fotoğraf Yükle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard" id="dashboard" style="font-size:15px ;">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/show-posts" id="show_posts" style="font-size:15px ;">Topluluk ve Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pricing" id="pricing" style="font-size:15px ;">Paket Ve Fiyatlar</a>
+                    </li>
+                    {% if current_user.id == 1 %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.admin')}}">Admin</a>
+                      </li>
+                    {% endif %}
+                </ul>
+                <form method="POST" action="{{ url_for('auth.search')}}" class="d-flex" >
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                    <button class="btn btn-outline-secondary" type="submit">Ara</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container px-5">
+                <h1 class="masthead-heading mb-0">CYCLOP  Ev Güvenlik Sistemleri Ve Akıllı Asistanı</h1>
+                <h2 class="masthead-subheading mb-0">Akıllı komutlarıyla hayatını kolaylaştırmak ve ev sistemleri için otomasyon hizmetleri barındırır.</h2>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" style="height: 95px;" href="#scroll">Daha Fazla Bilgi İçin</a>
+            </div>
+        </div>
+        <div class="mouse-icon" ><div class="wheel"></div></div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+    <section id="scroll" style="margin: auto;margin-bottom: 50px;">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="row">
+                <p><h2>Shopping Cart using Python Flask PostgreSQL</h2></p>
+                <div class="col-sm-12">
+                
+                    {% if 'cart_item' in session %}
+                        <p><a id="btnEmpty" href="{{ url_for('.empty_cart') }}" class="btn btn-danger">Empty Cart</a></p>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th class="text-center">Unit Price</th>
+                                    <th class="text-center">Price</th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, val in session['cart_item'].items() %}
+                                {% set quantity = session['cart_item'][key]['quantity'] %}
+                                {% set price = session['cart_item'][key]['price'] %}
+                                {% set item_price = session['cart_item'][key]['total_price'] %} 
+                                <tr>
+                                    <td class="col-sm-8 col-md-6">
+                                    <div class="media">
+                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="/static/images/{{ session['cart_item'][key]['image'] }}" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body" style="padding-left:10px;">
+                                            <h4 class="media-heading"> <a href="#">{{ session['cart_item'][key]['name'] }}</a></h4>
+                                            <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                        </div>
+                                    </div></td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                    <input type="email" class="form-control" value="{{ quantity }}">
+                                    </td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>${{ price }} </strong></td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>${{ item_price }} </strong></td>
+                                    <td class="col-sm-1 col-md-1">
+                                    <a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-remove"></span> Remove
+                                    </a></td>
+                                </tr>
+                            {% endfor %}
+                                <tr>
+                                    <td colspan="4"><h5>Total Quantity</h5></td>
+                                    <td class="text-right"><h5><strong>{{ session['all_total_quantity'] }}</strong></h5></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><h3>Total</h3></td>
+                                    <td colspan="2" class="text-right"><h3><strong>$ {{ session['all_total_price'] }}</strong></h3></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    </button></td>
+                                    <td>
+                                    <button type="button" class="btn btn-success">
+                                        Checkout <span class="glyphicon glyphicon-play"></span>
+                                    </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% else: %}
+                        <div class="no-records">Your Cart is Empty</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>                
+    <section class="our-publication pt-100 pb-70">
+                    <div class="container">
+                        <div class="section-header">
+                            <i class="fa fa-book"></i>
+                            <h2>Our Product</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod  labore et dolore magna aliqua.</p>
+                        </div>
+                          
+                        <div class="row">
+                            {% for product in products %}
+                                <div class="col-sm-6 col-lg-3"> 
+                                    <form method="post" action="/add">
+                                        <div class="single-publication">
+                                            <figure style="width:263px;">
+                                                <a href="#">
+                                                    <img src="/static/images/{{ product.image }}">
+                                                </a>
+                                                <ul>
+                                                    <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
+                                                    <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
+                                                </ul>
+                                            </figure>
+                
+                                            <div class="publication-content">
+                                                <span class="category">{{ product.category }}</span>
+                                                <h3><a href="#">{{ product.name }}</a></h3>
+                                                <ul>
+                                                    <li><i class="icofont-star"></i></li>
+                                                    <li><i class="icofont-star"></i></li>
+                                                    <li><i class="icofont-star"></i></li>
+                                                    <li><i class="icofont-star"></i></li>
+                                                    <li><i class="icofont-star"></i></li>
+                                                </ul>
+                                                <h4 class="price">$ {{ product.price }}</h4>
+                                            </div>
+                
+                                            <div class="add-to-cart">
+                                                <input type="hidden" name="code" value="{{ product.code }}"/>
+                                                <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                                                <input type="submit" value="Add to Cart" class="default-btn" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            {% endfor %}                                  
+                        </div>
+                    </div>
+    </section>
+    <style>
+        .pt-100 {
+                        padding-top: 100px;
+                    }
+                    .pb-70 {
+                        padding-bottom: 70px;
+                    }
+                    .section-header {
+                        margin-bottom: 60px;
+                        text-align: center;
+                    }
+                    .section-header i {
+                        color: #ff007d;
+                        font-size: 50px;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                    }
+                    .section-header h2 {
+                        font-weight: bold;
+                        font-size: 34px;
+                        margin: 0;
+                    }
+                    .section-header p {
+                        max-width: 500px;
+                        margin: 20px auto 0;
+                    }
+                    .single-publication {
+                        border: 1px solid #f2eee2;
+                        margin-bottom: 30px;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    .single-publication figure {
+                        position: relative;
+                        margin: 0;
+                        text-align: center;
+                    }
+                    .single-publication figure > a {
+                        background-color: #fafafa;
+                        display: block;
+                    }
+                    .single-publication figure ul {
+                        list-style-type: none;
+                        padding: 0;
+                        margin: 0;
+                        position: absolute;
+                        right: -50px;
+                        top: 20px;
+                        transition: .6s;
+                        -webkit-transition: .6s;
+                    }
+                    .single-publication:hover figure ul {
+                        right: 15px;
+                    }
+                    .single-publication figure ul li a {
+                        display: inline-block;
+                        width: 35px;
+                        height: 35px;
+                        text-align: center;
+                        font-size: 15px;
+                        background: #ff007d;
+                        margin-bottom: 7px;
+                        border-radius: 50%;
+                        line-height: 35px;
+                        color: #fff;
+                    }
+                    .single-publication figure ul li a:hover {
+                        color: #fff;
+                        background: #e50663;
+                    }
+                    .single-publication .publication-content {
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .single-publication .publication-content .category {
+                        display: inline-block;
+                        font-family: 'Open Sans', sans-serif;
+                        font-size: 14px;
+                        color: #ff007d;
+                        font-weight: 600;
+                    }
+                    .single-publication .publication-content h3 {
+                        font-weight: 600;
+                        margin: 8px 0 10px;
+                        font-size: 20px;
+                    }
+                    .single-publication .publication-content h3 a {
+                        color: #1f2d30;
+                    }
+                    .single-publication .publication-content h3 a:hover {
+                        color: #ff007d;
+                    }
+                    .single-publication .publication-content ul {
+                        list-style-type: none;
+                        padding: 0;
+                        margin: 0;
+                        margin-bottom: 15px;
+                    }
+                    .single-publication .publication-content ul li {
+                        display: inline-block;
+                        font-size: 18px;
+                        color: #fec42d;
+                    }
+                    .single-publication .publication-content .price {
+                        font-size: 18px;
+                        color: #ff007d;
+                    }
+                    .single-publication .publication-content .price span {
+                        color: #6f6f6f;
+                        text-decoration: line-through;
+                        padding-left: 5px;
+                        font-weight: 300;
+                    }
+                    .single-publication .add-to-cart {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        background: #fff;
+                        opacity: 0;
+                        visibility: hidden;
+                        text-align: center;
+                        -webkit-transform: scale(.7);
+                        transform: scale(.7);
+                        height: 105px;
+                        -moz-transition: .4s;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                    }
+                    .single-publication:hover .add-to-cart {
+                        visibility: visible;
+                        transform: scale(1);
+                        -webkit-transform: scale(1);
+                        opacity: 1;
+                    }
+                    .single-publication .add-to-cart .default-btn {
+                        margin-top: 28px;
+                        padding: 8px 25px;
+                        font-size: 14px;
+                    }
+                    .single-publication .category {
+                        margin: 0;
+                    }
+                    .single-publication .add-to-cart .default-btn {
+                        margin-top: 28px;
+                        padding: 8px 25px;
+                        font-size: 14px;
+                    }
+                    .default-btn {
+                        background-color: #ff007d;
+                        color: #fff;
+                        border: 1px solid #ff007d;
+                        display: inline-block;
+                        padding: 10px 30px;
+                        border-radius: 30px;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+                    .default-btn:hover {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+    </style> 
+    
+    <!-- Footer-->
+    <footer class="kilimanjaro_area">
+            <!-- Top Footer Area Start -->
+            <div class="foo_top_header_one section_padding_100_70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Hakkımızda</h5>
+                                <p>Cycloptr akıllı ve hızlı çözümler üretip ev , ofis için otomasyon hizmetleri sunmaktadır.Bunların içinde cihaz kontrolleri ve güvenlik sistemleri ile 7/24 ev güvenliğinizi ve takibinizi yapabilirsiniz. </p>
+                                <p>Şirketimiz çalışanları kadar müşterilerinin fikirlerine de önem verir.Bunun için fikirlerinizi ya da geliştirmelerinizi bloğumuzda paylaşabilirsiniz ve bunların hayata geçirilebilmesine ön ayak olabilirsiniz.</p>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Social Medya</h5>
+                                <ul class="kilimanjaro_social_links">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                                    <li><a target="_blank" href="https://github.com/SAOCyper" ><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" style="width: 240px;">
+                            <div class="kilimanjaro_part">
+                                <h5>Konu Başlıkları</h5>
+                                <ul class=" kilimanjaro_widget">
+                                    <li><a href="#">Yüz Tanıma</a></li>
+                                    <li><a href="#">Ses Tanıma</a></li>
+                                    <li><a href="#">Yapay Zeka</a></li>
+                                    <li><a href="#">İnternet Bilgi Sistemi</a></li>
+                                    <li><a href="#">Chat Bot</a></li>
+                                    <li><a href="#">Ev Otomasyonu</a></li>
+                                    <li><a href="#">Güvenlik Sistemleri</a></li>
+                                    <li><a href="#">Eğlence</a></li>
+                                </ul>
+                            </div>
+                            <div class="kilimanjaro_part m-top-15">
+                                <h5>Önemli Linkler</h5>
+                                <ul class="kilimanjaro_links">
+                                    <li><a href="terms-and-conditions"><i class="fa fa-angle-right" aria-hidden="true"></i>Lisans Bilgisi</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Destek Hattı</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Kariyer</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk Kuralları</a></li>
+                                    <li><a href="show-posts"><i class="fa fa-angle-right" aria-hidden="true"></i>Topluluk & Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3" >
+                            <div class="kilimanjaro_part">
+                                <h5>Son Postlar</h5>
+                                {% for post in posts %}
+                                    <div class="kilimanjaro_blog_area">
+                                        <div class="kilimanjaro_thumb">
+                                            <img class="img-fluid" src="https://3.bp.blogspot.com/--C1wpaf_S4M/W7V__10nRoI/AAAAAAAAK24/1NSfapuYSIY0f0wzXY9NgoH0FjQLT07YACKgBGAs/s1600/maxresdefault.jpg" alt="">
+                                        </div>
+                                        <a href="#">{{ post.title}}</a><br/>
+                                        <p class="kilimanjaro_date">{{ post.date_posted}} | {{ post.slug}}</p>
+                                        <p>{{ post.content|safe}}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="section has-img-bg pb-0" style="background: url('../static/images/section.jpg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 my-3">
+                        <h6 class="mb-0">Telefon numaramız</h6>
+                        <p class="mb-4">+ 123-456-7890</p>
+
+                        <h6 class="mb-0">Adresimiz</h6>
+                        <p class="mb-4">Hacettepe Üniversitesi Üniversiteler Mahallesi Hacettepe TeknoKent Ar-Ge Bina No:3 Çankaya/Ankara</p>
+
+                        <h6 class="mb-0">Email</h6>
+                        <p class="mb-0">info@website.com</p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-7">
+                        <form method="POST">
+                            <h4 class="mb-4">Bize Mesaj Bırak</h4>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name" placeholder="İsim">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="email" class="form-control text-white rounded-0 bg-transparent" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject" placeholder="Konu">
+                                </div>
+                                <div class="form-group col-12" style="margin:auto ;">
+                                    <textarea name="message" id="" cols="30" rows="4" class="form-control text-white rounded-0 bg-transparent" placeholder="Mesaj"></textarea>
+                                </div>
+                                <div class="form-group col-12 mb-0">
+                                    <button type="submit" class="btn btn-primary rounded w-md mt-3">Gönder</button>
+                                </div>                          
+                            </div>                          
+                        </form>
+                    </div>
+                </div>
+                <!-- Page Footer -->
+                <footer class="mt-5 py-4 border-top border-secondary">
+                    <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>,Cycloptr Created By  <a href="https://cycloptr.com/" target="_blank"> Cyclop Inc.</a>  All rights reserved </p>     
+                </footer>
+                <!-- End of Page Footer -->  
+            </div>
+    </section> 
+</body>
+</html>

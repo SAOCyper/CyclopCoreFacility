@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+          <filter id="gooey">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="highContrastGraphic" />
+              <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+          </filter>
+      </defs>
+    </svg>
+    <!-- <link href="{{ url_for('static', filename='bootstrapmodified.css') }}" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='webcam.min.js') }}" ></script> 
+    <script type="text/javascript" src="{{ url_for('static', filename='upload_button.js') }}" ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    /> 
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+    <!-- <link href="{{ url_for('static', filename='header.css') }}" rel="stylesheet" type="text/css" /> -->
+    <link href="{{ url_for('static', filename='login.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='formgroup.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='close_button.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='signup_button.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='submit_button.css') }}" rel="stylesheet" type="text/css" />
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+    <header>
+      <div class="logo">
+        <span style="--i:1;">C</span>
+        <span style="--i:2;">Y</span>
+        <span style="--i:3;">C</span>
+        <span style="--i:4;">L</span>
+        <span style="--i:5;">O</span>
+        <span style="--i:6;">P</span>
+      </div>  
+      <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+      <nav class="nav-bar">
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <a href="/" id="home"class="active">Home</a>
+          </li>
+          <li>
+            <a href="/logout" id="logout">Çıkış Yap</a>
+          </li>
+          <li>
+            <a href="/upload-image" id="uploadImage">Fotoğraf Yükle</a>
+          </li>
+          <li>
+            <a href="/user-information" id="userinformation">Kullanıcı Bilgisi</a>
+          </li>
+          <li>
+            <a href="/pricing" id="pricing">Pricing</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="/login" id="login">Giriş</a>
+          </li>
+          <li>
+            <a href="/sign-up" id="signUp">Kayıt Ol</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <script>
+      hamburger = document.querySelector(".hamburger");
+      hamburger.onclick = function(){
+          navBar = document.querySelector(".nav-bar");
+          navBar.classList.toggle("active");
+      }
+    </script>
+    <script type="text/javascript">
+      let progress = document.getElementById('progressbar');
+      let totalHeight=document.body.scrollHeight - window.innerHeight;
+      window.onscroll = function(){
+        let progressHeight = (window.pageYOffset / totalHeight) * 100;
+        progress.style.height = progressHeight + "%";
+      }
+    </script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert" data-dismiss="alert" style="background: whitesmoke;">
+      {{ message }}
+      <button type="button" style="background-color: transparent;border: none;"class="close-flash">
+        <div class="close-container-flash">
+            <div class="leftright-flash"></div>
+            <div class="rightleft-flash"></div>
+            <label class="close-flash">Delete</label>
+        </div>
+      </button>
+    </div>
+    {% else %}
+    <div id="flash" class="alert alert-success alter-dismissable fade show" role="alert" style="font-size: 20px;" data-dismiss="alert">
+      {{ message }}
+      <button type="button" style="background-color: transparent;border: none;"class="close-flash">
+        <div class="close-container-flash" aria-hidden="true">
+            <div class="leftright-flash"></div>
+            <div class="rightleft-flash"></div>
+            <label class="close-flash" aria-hidden="true">Delete</label>
+        </div>
+      </button>
+    </div>
+    
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div class="container" style="min-width: 100%;">{% block content %} {% endblock %}</div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+  </body>
+</html>
